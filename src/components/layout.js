@@ -47,21 +47,13 @@ const Layout = ({ children }) => {
   const [theme, setTheme] = useState('light')
   const { title } = useSiteMetadata()
 
-  const siteLinks = [
-    'About',
-    'Skills',
-    'Projects',
-    'Contact'
-  ]
-
   return (
     <>
       <GlobalStyle theme={theme}/>
       <Normalize />
       <PageLayout>
         <Header 
-          siteTitle={title} 
-          siteLinks={siteLinks}
+          siteTitle={title}
           theme={theme}
           setTheme={setTheme}
         />

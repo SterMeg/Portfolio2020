@@ -2,7 +2,9 @@ import React from "react"
 
 import Layout from "../components/layout"
 import Banner from "../components/banner"
+import About from "../components/about"
 import SEO from "../components/seo"
+import { lightTheme } from "../utils"
 
 // const skills = {
 //   frontend: {
@@ -22,6 +24,8 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <Banner />
+      <About />
+      <section style={{background: lightTheme.accentColor}}></section>
     </Layout>
   )
 }

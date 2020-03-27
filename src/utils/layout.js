@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import {lightTheme} from "../utils"
 
 export const Container = styled.section`
@@ -26,7 +26,12 @@ export const LinkList = styled.ul`
     font-size: 1.3rem;
     font-weight: 700;
     padding: 10px;
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
+    &:hover {
+      background: linear-gradient(to right, #f40e67 0%, #fccd11);
+      color: ${lightTheme.textColorInverted};
+    }
   }
 `

@@ -1,6 +1,9 @@
 import React from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
 import Image from "../components/image"
 import { Container, GradientText, LinkList } from "../utils/layout"
+import { Scallop } from "./svg"
 import { lightTheme } from "../utils"
 import styled from "styled-components"
 
@@ -22,11 +25,14 @@ const socialLinks = [
 ]
 
 const NameCard = styled.div`
+  align-self: center;
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  grid-column: 2 / span 2;
-  grid-row: 2;
+  grid-column: 2 / span 4;
+  @media (min-width: 550px) {
+    grid-column: 2 / span 2;
+  }
   h3 {
     text-transform: uppercase;
   }
@@ -64,23 +70,47 @@ const H1 = styled(GradientText)`
 `
 
 const ExternalLinks = styled(LinkList)`
-
+  a {
+    background: #fff;
+    cursor: pointer;
+    margin-right: 2px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    display: grid;
+    place-content: center;
+  }
 `
 
 const BannerContainer = styled(Container)`
   min-height: 100vh;
-  grid-template-rows: 1fr max-content 1fr;
+  /* grid-template-rows: 1fr max-content 1fr; */
 `
 
 const ImageContainer = styled.div`
-  grid-row: 2 / span 2;
-  grid-column: 4 / span 2;
-  align-self: end;
-  > div {
-    max-width: 375px;
-    margin: auto;
+  display: none;
+  @media (min-width: 550px) {
+    display: block;
+    grid-column: 4 / span 2;
+    align-self: end;
+    > div {
+      max-width: 500px;
+      margin: auto;
+    }
   }
 `
+
+const linkIcon = linkName => {
+  const linkMap = {
+    'github': faGithub,
+    'codepen': faCodepen,
+    'linkedin': faLinkedinIn,
+    'twitter': faTwitter,
+    'medium': faMediumM
+  }
+
+  return linkMap[linkName];
+}
 
 const Banner = () => (
   <BannerContainer background={lightTheme.accentColor}>
@@ -94,7 +124,7 @@ const Banner = () => (
       <ExternalLinks>
         {socialLinks.map(link => (
           <li key={link.name}>
-            <a href={link.url}>{link.name}</a>
+            <a href={link.url}><FontAwesomeIcon icon={linkIcon(link.name.toLowerCase())}/></a>
           </li>
         ))}
       </ExternalLinks>
@@ -102,6 +132,7 @@ const Banner = () => (
     <ImageContainer>
       <Image />
     </ImageContainer>
+    <Scallop flip id={2}/>
   </BannerContainer>
 )
 
