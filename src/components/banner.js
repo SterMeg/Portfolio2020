@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
 import Image from "../components/image"
 import { Container, GradientText, LinkList } from "../utils/layout"
-import { Scallop } from "./svg"
+import { Scallop, Circles, Shapes } from "./svg"
 import { lightTheme } from "../utils"
 import styled from "styled-components"
 
@@ -92,11 +92,16 @@ const ImageContainer = styled.div`
   @media (min-width: 550px) {
     display: block;
     grid-column: 4 / span 2;
+    grid-row: 1;
     align-self: end;
-    > div {
-      max-width: 500px;
+    position: relative;
+    max-width: 418px;
+    left: 50%;
+    transform: translateX(-50%)
+    /* > div {
+      max-width: 418px;
       margin: auto;
-    }
+    } */
   }
 `
 
@@ -130,6 +135,8 @@ const Banner = () => (
       </ExternalLinks>
     </NameCard>
     <ImageContainer>
+      <Circles />
+      <Shapes />
       <Image />
     </ImageContainer>
     <Scallop flip id={2}/>
