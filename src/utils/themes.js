@@ -1,4 +1,4 @@
-import { pink, yellow, blue, neutral } from "./colors"
+import { pink, yellow, blue, neutral, orange } from "./colors"
 
 export const lightTheme = {
   backgroundColor: neutral[100],
@@ -6,5 +6,6 @@ export const lightTheme = {
   secondaryColor: yellow,
   accentColor: blue,
   textColor: neutral[600],
-  textColorInverted: neutral[100]
+  textColorInverted: neutral[100],
+  linkHover: orange
 }

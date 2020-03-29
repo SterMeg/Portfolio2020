@@ -3,9 +3,12 @@ import styled from "styled-components"
 
 const CirclesSvg = styled.svg`
   position: absolute;
-  width: 130%;
+  width: 110%;
   top: -35%;
   left: -22%;
+  @media (min-width: 940px) {
+    width: 130%;
+  }
 `
 
 export const Circles = () => (

@@ -24,11 +24,16 @@ const GlobalStyle = createGlobalStyle`
     background: ${lightTheme.backgroundColor};
     color: ${lightTheme.textColor};
     font-family: ${primaryFont};
-    font-size: ${typeScale.paragraph}
+    font-size: ${typeScale.paragraph};
+    line-height: 1.6;
   }
 
   a {
+    color: inherit;
     text-decoration: none;
+    &:hover {
+      color: ${lightTheme.linkHover}
+    }
   }
 `
 
@@ -59,7 +64,7 @@ const Layout = ({ children }) => {
         />
         <main>{children}</main>
         <Footer>
-          © Meghan Sterling {new Date().getFullYear()} | Photos by <a href="https://pamlau.com" target="_blank" rel="noopener noreffer">Pam Lau</a>
+          © Meghan Sterling {new Date().getFullYear()} | Photos by <a href="https://pamlau.com">Pam Lau</a>
         </Footer>
       </PageLayout>
     </>

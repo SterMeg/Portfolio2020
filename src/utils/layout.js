@@ -1,10 +1,10 @@
-import styled, {keyframes} from 'styled-components'
+import styled from 'styled-components'
 import {lightTheme} from "../utils"
 
 export const Container = styled.section`
   background: ${props => props.background || lightTheme.backgroundColor};
   display: grid;
-  grid-template-columns: 1fr repeat(4, minmax(75px, 295px)) 1fr;
+  grid-template-columns: 1fr repeat(4, minmax(55px, 275px)) 1fr;
   grid-column-gap: 20px;
 `
 

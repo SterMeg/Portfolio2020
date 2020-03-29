@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
-import Image from "../components/image"
+import BannerImage from "./banner-image"
 import { Container, GradientText, LinkList } from "../utils/layout"
 import { Scallop, Circles, Shapes } from "./svg"
 import { lightTheme } from "../utils"
@@ -40,6 +40,7 @@ const NameCard = styled.div`
 
 const H1 = styled(GradientText)`
   font-size: 8rem;
+  line-height: 1.1;
   margin: 0;
   position: relative;
   &::before,
@@ -125,7 +126,6 @@ const Banner = () => (
         Sterling
       </H1>
       <h3>Full-Stack Developer</h3>
-      {/* Social buttons */}
       <ExternalLinks>
         {socialLinks.map(link => (
           <li key={link.name}>
@@ -137,7 +137,7 @@ const Banner = () => (
     <ImageContainer>
       <Circles />
       <Shapes />
-      <Image />
+      <BannerImage />
     </ImageContainer>
     <Scallop flip id={2}/>
   </BannerContainer>

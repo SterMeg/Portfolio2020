@@ -1,6 +1,6 @@
 export const pink = "#f40e67"
 export const yellow = "#fccd11"
-export const orange = "#FF9300"
+export const orange = "#c50952"
 export const blue = "#F9F9FF"
 
 export const neutral = {
