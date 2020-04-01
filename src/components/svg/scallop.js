@@ -8,6 +8,7 @@ const ScallopPattern = styled.svg`
   position: absolute;
   top: ${props => (props.flip ? "unset" : "100%")};
   grid-column: 1 / -1;
+  z-index: 5;
 `
 
 export const Scallop = ({ flip, id }) => (
