@@ -1,6 +1,6 @@
 import React from "react"
 import {useSiteMetadata} from "../hooks/useSiteMetadata"
-import { Container } from "../utils/layout"
+import { Container, Heading2 } from "../utils/layout"
 import { Scallop } from "./svg"
 import AboutImage from "./about-image"
 import styled from "styled-components"
@@ -62,12 +62,9 @@ const AboutBlurb = styled.div`
   grid-column: 6 / span 4;
   grid-row: 3;
 `
-const H2 = styled.h2`
-  font-size: 7.2rem;
+const AboutHeading = styled(Heading2)`
   grid-column: 4;
   grid-row: 1 / span 2;
-  line-height: 1;
-  margin: 0;
   margin-left: 35%;
   z-index: 5;
 `
@@ -76,7 +73,7 @@ const About = () => {
   const { contact } = useSiteMetadata()
   return (
     <AboutContainer>
-      <H2>About Meghan</H2>
+      <AboutHeading>About Meghan</AboutHeading>
       <NameCard>
         <AboutImage />
         <figcaption>

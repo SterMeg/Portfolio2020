@@ -1,7 +1,7 @@
 import React, {useState} from "react"
-import { Container } from "../utils/layout"
+import { Container, Heading2 } from "../utils/layout"
 import { colors } from "../utils"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
 import { Scallop } from "./svg"
 import border from "../images/border.svg"
 
@@ -34,8 +34,17 @@ const allSkills = {
   }
 }
 
-const Toggle = styled.div`
+const Toggle = styled.fieldset`
+  border: none;
   grid-column: 5;
+  padding: 0;
+  white-space: nowrap;
+  margin-top: 20px;
+  legend {
+    font-size: 0.2rem;
+    opacity: 0;
+    position: absolute;
+  }
 `
 
 const FlipCard = styled.div`
@@ -101,6 +110,99 @@ const SkillHeading = styled.div`
   grid-column: 5;
   grid-row: 1 / span 2;
 `
+const slideRight = keyframes`
+  0 {
+    width: 3rem;
+    transform: translateX(0);
+  }
+  50% {
+    width: 6rem;
+    transform: translateX(-.5rem);
+  }
+  100% {
+    width: 3rem;
+    transform: translateX(-3rem);
+  }
+`
+
+const slideLeft = keyframes`
+  0% {
+    width: 3rem;
+    transform: translateX(-3rem);
+  }
+  50% {
+    width: 6rem;
+    transform: translateX(-.5rem);
+  }
+  100% {
+    width: 3rem;
+    transform: translateX(0);
+  }
+`
+
+const RadioInput = styled.input`
+  opacity: 0;
+  position: absolute;
+  &:first-of-type:checked ~ label:first-of-type:after {
+    background-color: #dddddd;
+  }
+  &:first-of-type:checked ~ label:first-of-type:before {
+    animation: ${slideRight} 0.8s forwards ease-in-out;
+  }
+  &:first-of-type:not(:checked) ~ label:first-of-type:before {
+    animation: ${slideLeft} 0.8s forwards ease-in-out;
+  }
+  &:last-of-type:checked ~ label:last-of-type {
+    z-index: 1;
+  }
+`
+
+const RadioLabel = styled.label`
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 3;
+  position: relative;
+  z-index: 2;
+  &:first-of-type {
+    padding-right: 8rem;
+  }
+  &:last-child {
+    margin-left: -7rem;
+    padding-left: 8rem;
+  }
+  &:first-of-type:before,
+  &:first-of-type:after {
+    content: "";
+    height: calc(100% - 1.2rem);
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    vertical-align: middle;
+    width: 6rem;
+  }
+  &:first-of-type:before {
+    background: linear-gradient(to right, #fccd11 0%, #f40e68 100%);
+    border-radius: 5rem;
+    position: absolute;
+    top: 0.6rem;
+    right: 0.25rem;
+    /* transform: translateX(2rem); */
+    /* transform: translate(0em) scaleX(0.5); */
+    /* width: 3rem; */
+    z-index: 2;
+  }
+  &:first-of-type:after {
+    border: 1px solid #eee;
+    background-color: #222;
+    border-radius: 5rem;
+    padding: 0.5rem;
+    background-clip: content-box;
+    transition: background-color 1s ease-in-out;
+    /* width: 6rem; */
+    margin: 0 1rem;
+  }
+`
 
 const SkillBox = ({ skillSet, title, selectedSkill, boxNumber }) => (
   <FlipCard boxNumber={boxNumber}>
@@ -128,9 +230,12 @@ const [skillSelect, setSkillSelect] = useState('frontend')
  return (
    <SkillsContainer>
      <SkillHeading>
-       <h2>My Skills</h2>
+      <Heading2>My Skills</Heading2>
        <Toggle>
-         <input
+         <legend>
+           Choose a stack
+         </legend>
+         <RadioInput
            type="radio"
            name="skills"
            value="frontend"
@@ -138,8 +243,8 @@ const [skillSelect, setSkillSelect] = useState('frontend')
            checked={skillSelect === "frontend"}
            onChange={e => setSkillSelect(e.target.value)}
          />
-         <label for="frontent">Front-end</label>
-         <input
+         <RadioLabel for="frontend">Front-end</RadioLabel>
+         <RadioInput
            type="radio"
            name="skills"
            value="backend"
@@ -147,7 +252,7 @@ const [skillSelect, setSkillSelect] = useState('frontend')
            checked={skillSelect === "backend"}
            onChange={e => setSkillSelect(e.target.value)}
          />
-         <label for="backend">Back-end</label>
+         <RadioLabel for="backend">Back-end</RadioLabel>
        </Toggle>
      </SkillHeading>
      {Object.keys(allSkills).map((key, index) => (
