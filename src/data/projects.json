@@ -1,0 +1,75 @@
+[
+  {
+    "name": "ChoreCheck",
+    "type": "React Application",
+    "skills": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    "description": "A concept app to create chore lists for multiple users in a household.",
+    "url": "https://chore-checker.herokuapp.com/",
+    "showOnPortfolio": false
+  },
+  {
+    "name": "Superdad Jokes",
+    "type": "React Application",
+    "skills": [
+      "React",
+      "React Router",
+      "API"
+    ],
+    "description": "Search for a Marvel character. Get a random dad joke. Customize the background, text, and frame of your card! Uses the Marvel API and icanhazdadjokes API in order to get an image of a Marvel character and a dad joke",
+    "url": "https://marvelmemes-1526834371606.firebaseapp.com/",
+    "github": "https://github.com/SterMeg/marvelmemes",
+    "img": "../images/projects/superdadjokes-mockup.png",
+    "showOnPortfolio": true
+  },
+  {
+    "name": "Get Hooked on Comics",
+    "type": "Interactive jQuery Quiz",
+    "skills": [
+      "Javascript",
+      "jQuery",
+      "Sass",
+      "CSS3",
+      "HTML5",
+      "Responsive"
+    ],
+    "description": "Find out which comic you should read with this interactive web application. Each question returns an array of matching titles, and returned titles are tallied at the end to find the best match",
+    "url": "",
+    "github": "",
+    "img": "../images/projects/comicquiz-mockup.png",
+    "showOnPortfolio": true
+  },
+  {
+    "name": "Get Lit",
+    "type": "React & Firebase Application",
+    "skills": ["React", "React Router", "Firebase", "API", "Team Programming"],
+    "description": "A reading recommendation app based on a provided brief. Get Lit uses the Goodreads API to display recommended books in a chosen genre, and Firebase to allow user to login and save books to their own shelf. Created with <a href='http: //www.carolinepisano.com'>Caroline Pisano</a> and <a href='http: //www.rckychng.com/'>Rocky Chung</a>.",
+    "url": "https://getlitbookrecommendations.firebaseapp.com/",
+    "github": "https://github.com/SterMeg/whatToRead",
+    "img": "../images/projects/git-lit-mockup.png",
+    "showOnPortfolio": false
+  },
+  {
+    "name": "Lisbon",
+    "type": "PSD to HTML Conversion",
+    "skills": ["HTML5", "CSS3", "SCSS", "Responsive Design"],
+    "description": "Single page website replicated from PSD design. Pixel perfect and fully responsive.",
+    "url": "",
+    "github": "https://github.com/SterMeg/lisbon",
+    "img": "../images/projects/lisbon-mockup.png",
+    "showOnPortfolio": true
+  },
+  {
+    "name": "Code Play!",
+    "type": "CodePen Experiments",
+    "skills": ["Pure CSS Art", "SVG Animation", "CSS Grid"],
+    "description": "I love to play with CSS, experiment with animations, and learn new skills! Some of my CodePens include a Comic Book inspired gallery layout using CSS Grid, a Jawbone photo layout with CSS Grid, and a pure CSS pug!",
+    "url": "https://codepen.io/megster",
+    "img": "../images/projects/codepen-mockup.png",
+    "showOnPortfolio": true
+  }
+]
