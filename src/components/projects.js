@@ -2,28 +2,119 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import { Heading2, Container } from "../utils/layout"
+import BaseHeading from "./base-heading"
+import { lightTheme } from "../utils"
+import { Container, listUnset } from "../utils/layout"
 
 const ProjectsContainer = styled(Container)`
-  grid-gap: 60px;
+  grid-template-columns: 1fr repeat(12, minmax(20px, 77.5px)) 1fr;
+  grid-gap: 20px;
   padding: 150px 0;
+  article {
+    &:first-of-type {
+      grid-column: 2 / span 4;
+      grid-row: 2 / span 2;
+      grid-template-columns: auto;
+      a {
+        order: -1;
+      }
+    }
+    &:nth-of-type(2) {
+      grid-row: 2;
+      grid-column: 6 / span 8;
+    }
+    &:nth-of-type(3) {
+      grid-row: 3;
+      grid-column: 6 / span 4;
+      grid-template-columns: auto;
+      background: #fff;
+      box-shadow: -5.84px 6.58px 20px #b0b0b0;
+    }
+    &:nth-of-type(4) {
+      grid-row: 3 / span 2;
+      grid-column: 10 / span 4;
+      grid-template-columns: auto;
+      a {
+        order: -1;
+      }
+    }
+    &:nth-of-type(5) {
+      grid-column: 2 / span 8;
+    }
+  }
 `
 
-const ProjectsHeading = styled(Heading2)`
-  grid-column: 2 / 6;
+const ProjectsHeading = styled(BaseHeading)`
+  grid-column: 2 / -2;
   text-align: center;
 `
 
 const ProjectContainer = styled.div`
+  align-content: start;
   background: #f9f9ff;
   display: grid;
   grid-column: 2 / 6;
-  padding: 60px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, calc(50% - 40px)));
-  grid-auto-flow: dense;
+  padding: 45px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, calc(50% - 40px)));
   grid-gap: 40px;
-  &:nth-of-type(even) > a {
-    grid-column: 2 / span 1;
+  a {
+    border: 6px solid white;
+    box-shadow: -5.84px 6.58px 20px #b0b0b0, inset 0 3px 3px #b0b0b0;
+  }
+  .gatsby-image-wrapper {
+    margin: 5px;
+  }
+  /* a {
+    position: relative;
+    background: #fff;
+  }
+  a:before {
+    content: "";
+    background: linear-gradient(to right, #f40e67 0%, #fccd11 100%);
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+  } */
+`
+
+const ProjectHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  h3,
+  p {
+    text-transform: uppercase;
+  }
+  h3 {
+    color: ${lightTheme.primaryColor};
+  }
+  p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    order: -1;
+  }
+`
+
+const SkillList = styled.ul`
+  ${listUnset}
+  align-self: flex-start;
+  border-top: 2px solid ${lightTheme.secondaryColor};
+  border-bottom: 2px solid ${lightTheme.secondaryColor};
+  border-image: 
+    linear-gradient(
+      to right,
+      ${lightTheme.secondaryColor},
+      #ff9400 50%,
+      ${lightTheme.primaryColor} 100%
+    );
+  border-image-slice: 1;
+  flex-wrap: wrap;
+  padding: 5px;
+  li {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 `
 
@@ -41,7 +132,7 @@ const Projects = () => {
           img {
             childImageSharp {
               fluid(maxWidth: 510) {
-                ...GatsbyImageSharpFluid_tracedSVG
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -52,22 +143,30 @@ const Projects = () => {
   
   return (
     <ProjectsContainer id="projects">
-      <ProjectsHeading>My Work</ProjectsHeading>
+      <ProjectsHeading as="h2">My Work</ProjectsHeading>
       {data.allProjectsJson.nodes.map(project => (
-        <ProjectContainer key={project.name}>
-          <a href={project.url}><Img fluid={project.img.childImageSharp.fluid}/></a>
-          <div>  
-            <h4>{project.name}</h4>
-            <h3>{project.type}</h3>
-            <ul>{project.skills.map(skill => (
-              <li key={skill.name}>{skill}</li>
-            ))}</ul>
+        <ProjectContainer as="article" key={project.name}>
+          <div>
+            <ProjectHeader>
+              <BaseHeading as="h3" margin="1rem">{project.name}</BaseHeading>
+              <p>{project.type}</p>
+              <SkillList>
+                {project.skills.map(skill => (
+                  <li key={project.name + skill}>{skill}</li>
+                ))}
+              </SkillList>
+            </ProjectHeader>
             <p>{project.description}</p>
             <div>
               {project.url && <a href={project.url}>View Live</a>}
               {project.github && <a href={project.github}>View Code</a>}
             </div>
           </div>
+          {project.img && (
+            <a href={project.url}>
+              <Img fluid={project.img.childImageSharp.fluid} />
+            </a>
+          )}
         </ProjectContainer>
       ))}
     </ProjectsContainer>

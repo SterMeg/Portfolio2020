@@ -10,7 +10,7 @@ const AboutImage = () => {
       ) {
         childImageSharp {
           fluid(maxWidth: 458) {
-            ...GatsbyImageSharpFluid_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

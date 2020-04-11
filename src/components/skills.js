@@ -1,8 +1,9 @@
 import React, {useState} from "react"
-import { Container, Heading2 } from "../utils/layout"
-import { colors } from "../utils"
+import { Container } from "../utils/layout"
+import { lightTheme } from "../utils"
 import styled, { keyframes } from "styled-components"
 import { Scallop } from "./svg"
+import BaseHeading from "./base-heading"
 import border from "../images/border.svg"
 
 const SkillsContainer = styled(Container)`
@@ -214,7 +215,15 @@ const SkillBox = ({ skillSet, title, selectedSkill, boxNumber }) => (
           key={title + key}
         >
           <ul>
-            <h3>{title}</h3>
+            <BaseHeading
+              as="h3"
+              css={`
+                text-transform: uppercase;
+                color: ${lightTheme.primaryColor}
+              `}
+            >
+              {title}
+            </BaseHeading>
             {skillSet[key].map(skill => (
               <li key={skill}>{skill}</li>
             ))}
@@ -230,11 +239,9 @@ const [skillSelect, setSkillSelect] = useState('frontend')
  return (
    <SkillsContainer>
      <SkillHeading>
-      <Heading2>My Skills</Heading2>
+       <BaseHeading as="h2">My Skills</BaseHeading>
        <Toggle>
-         <legend>
-           Choose a stack
-         </legend>
+         <legend>Choose a stack</legend>
          <RadioInput
            type="radio"
            name="skills"
@@ -264,10 +271,10 @@ const [skillSelect, setSkillSelect] = useState('frontend')
          boxNumber={index}
        />
      ))}
-     <p style={{ gridRow: "4", gridColumn: "2" }}>
-       Don't see a skill you are looking for? I can learn it! I'm always ready
-       to learn new things, and I've proven that I can quickly and effectively
-       become productive with new tools and languages.
+     <p style={{ gridRow: "4", gridColumn: "2 / span 2" }}>
+       <b>Don't see a skill?</b> I can learn it! I'm always ready to learn new
+       things, and I've proven that I can quickly and effectively become
+       productive with new tools and languages.
      </p>
      <Scallop flip id={4} />
    </SkillsContainer>

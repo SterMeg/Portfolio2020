@@ -1,4 +1,17 @@
-[
+[ {
+    "name": "Shop Guelph Local",
+    "type": "Gatsby Page",
+    "skills": [
+      "React",
+      "Gatsby",
+      "TailwindCSS"
+    ],
+    "description": "I wanted to help local businesses being impacted by COVID-19. I knew of many that had pivoted to offering shopping alternatives, but it was hard to find which stores were still operating without knowing the store and following their social media. I created a quick build with the Gatsby Tailwind Starter with the goal of creating better visibility for who is offering alternative, and what they are.",
+    "url": "https://shop-guelph-local.info/",
+    "github": "https://github.com/SterMeg/marvelmemes",
+    "showOnPortfolio": true,
+    "img": "../images/projects/shop-guelph.png"
+  },
   {
     "name": "ChoreCheck",
     "type": "React Application",
@@ -24,6 +37,14 @@
     "url": "https://marvelmemes-1526834371606.firebaseapp.com/",
     "github": "https://github.com/SterMeg/marvelmemes",
     "img": "../images/projects/superdadjokes-mockup.png",
+    "showOnPortfolio": true
+  },
+  {
+    "name": "Code Play!",
+    "type": "CodePen Experiments",
+    "skills": ["Pure CSS Art", "SVG Animation", "CSS Grid"],
+    "description": "I love to play with CSS, experiment with animations, and learn new skills!",
+    "url": "https://codepen.io/megster",
     "showOnPortfolio": true
   },
   {
@@ -61,15 +82,6 @@
     "url": "",
     "github": "https://github.com/SterMeg/lisbon",
     "img": "../images/projects/lisbon-mockup.png",
-    "showOnPortfolio": true
-  },
-  {
-    "name": "Code Play!",
-    "type": "CodePen Experiments",
-    "skills": ["Pure CSS Art", "SVG Animation", "CSS Grid"],
-    "description": "I love to play with CSS, experiment with animations, and learn new skills! Some of my CodePens include a Comic Book inspired gallery layout using CSS Grid, a Jawbone photo layout with CSS Grid, and a pure CSS pug!",
-    "url": "https://codepen.io/megster",
-    "img": "../images/projects/codepen-mockup.png",
     "showOnPortfolio": true
   }
 ]

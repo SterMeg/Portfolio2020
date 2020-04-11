@@ -8,7 +8,7 @@ const BannerImage = () => {
       placeholderImage: file(relativePath: { eq: "meghan-sterling-banner.png" }) {
         childImageSharp {
           fluid(maxWidth: 418) {
-            ...GatsbyImageSharpFluid_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

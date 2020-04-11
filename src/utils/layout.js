@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {lightTheme} from "../utils"
 import {typeScale} from "./typography"
 
 export const Heading2 = styled.h2`
-  font-size: ${typeScale.header2};
+  font-size: ${typeScale.heading2};
   line-height: 1;
   margin: 0;
 `
@@ -22,11 +22,15 @@ export const GradientText = styled.span`
   -webkit-text-fill-color: transparent;
 `
 
-export const LinkList = styled.ul`
+export const listUnset = css`
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+`
+
+export const LinkList = styled.ul`
+  ${listUnset}
   a {
     color: inherit;
     display: block;
