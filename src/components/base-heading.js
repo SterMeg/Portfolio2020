@@ -6,6 +6,7 @@ const BaseHeading = styled.h1`
   margin: 0;
   margin-bottom: ${({ margin }) => margin || 0};
   font-weight: 700;
+  line-height: 1;
 `
 
 export default BaseHeading;

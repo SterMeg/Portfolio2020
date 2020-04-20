@@ -4,12 +4,11 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import BaseHeading from "./base-heading"
 import { lightTheme } from "../utils"
-import { Container, listUnset } from "../utils/layout"
+import SectionGrid from "./section-grid"
+import { listUnset } from "../utils/layout"
 
-const ProjectsContainer = styled(Container)`
-  grid-template-columns: 1fr repeat(12, minmax(20px, 77.5px)) 1fr;
-  grid-gap: 20px;
-  padding: 150px 0;
+const ProjectsContainer = styled(SectionGrid)`
+  grid-row-gap: 20px;
   article {
     &:first-of-type {
       grid-column: 2 / span 4;

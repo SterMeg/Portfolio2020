@@ -1,12 +1,13 @@
 import React from "react"
 import {useSiteMetadata} from "../hooks/useSiteMetadata"
-import { Container, Heading2 } from "../utils/layout"
 import { Scallop } from "./svg"
+import SectionGrid from './section-grid'
+import BaseHeading from "./base-heading"
 import AboutImage from "./about-image"
 import styled from "styled-components"
 
 const NameCard = styled.figure`
-  grid-column: 2 / span 3;
+  grid-column: 2 / span 5;
   grid-row: 2 / span 2;
   box-shadow: -20.84px 21.58px 30px #b0b0b0;
   align-self: start;
@@ -50,22 +51,19 @@ const Button = styled.button`
   }
 `
 
-const AboutContainer = styled(Container)`
-  grid-template-columns: 1fr repeat(8, minmax(17.5px, 127.5px)) 1fr;
+const AboutContainer = styled(SectionGrid)`
   grid-template-rows: 69px 115px auto;
-  padding: 150px 0;
   position: relative;
   text-align: justify;
 `
 
 const AboutBlurb = styled.div`
-  grid-column: 6 / span 4;
+  grid-column: 8 / span 6;
   grid-row: 3;
 `
-const AboutHeading = styled(Heading2)`
-  grid-column: 4;
+const AboutHeading = styled(BaseHeading)`
+  grid-column: 6 / -2;
   grid-row: 1 / span 2;
-  margin-left: 35%;
   z-index: 5;
 `
  
@@ -73,7 +71,7 @@ const About = () => {
   const { contact } = useSiteMetadata()
   return (
     <AboutContainer>
-      <AboutHeading>About Meghan</AboutHeading>
+      <AboutHeading as="h2">About<br></br>Meghan</AboutHeading>
       <NameCard>
         <AboutImage />
         <figcaption>

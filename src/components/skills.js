@@ -1,12 +1,12 @@
 import React, {useState} from "react"
-import { Container } from "../utils/layout"
 import { lightTheme } from "../utils"
 import styled, { keyframes } from "styled-components"
 import { Scallop } from "./svg"
 import BaseHeading from "./base-heading"
+import SectionGrid from "./section-grid"
 import border from "../images/border.svg"
 
-const SkillsContainer = styled(Container)`
+const SkillsContainer = styled(SectionGrid)`
   background: linear-gradient(
     to bottom,
     #f9f9ff 5%,
@@ -15,8 +15,10 @@ const SkillsContainer = styled(Container)`
     #f9f9ff 95%
   );
   padding: 150px 0;
-  grid-template-rows: repeat(4, 285px);
-  place-items: center;
+  grid-row-gap: var(--gutter);
+  grid-auto-rows: minmax(var(--rowHeight), auto);
+  /* grid-template-rows: repeat(4, 285px); */
+  /* place-items: center; */
   position: relative;
 `
 
@@ -37,10 +39,22 @@ const allSkills = {
 
 const Toggle = styled.fieldset`
   border: none;
-  grid-column: 5;
-  padding: 0;
+  margin: 0;
+  grid-column: 2 / -2;
+  top: 100vh;
+  background: white;
+  z-index: 5;
+  transform: translateY(-100%);
+  text-align: center;
+  padding: 10px 0;
   white-space: nowrap;
   margin-top: 20px;
+  position: sticky;
+  @media (min-width: 768px) {
+    position: static;
+    grid-column: 5;
+    text-align: left;
+  }
   legend {
     font-size: 0.2rem;
     opacity: 0;
@@ -50,16 +64,22 @@ const Toggle = styled.fieldset`
 
 const FlipCard = styled.div`
   background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   perspective: 1000px;
-  grid-column: ${props => props.boxNumber + 2} / span 2;
-  grid-row: ${props => props.boxNumber + 1} / span 2;
-  width: calc(100% - 35%);
-  height: calc(100% - 35%);
+  grid-column: 2 / -2;
+  grid-row: span 12;
+  @media (min-width: 940px) {
+    grid-column: ${props => props.boxNumber * 3 + 2} / span 6;
+    grid-row: ${props => props.boxNumber * 3 + 1} / span 6;
+  }
 `
 
 const FlipCardInner = styled.div`
-  position: relative;
-  width: 100%;
+  display: grid;
+  grid-column: 2 / -2;
+  grid-row: 2 / -2;
   height: 100%;
   text-align: center;
   transition: transform 0.8s;
@@ -71,11 +91,14 @@ const FlipCardInner = styled.div`
 const FlipCardStyles = styled.div`
   box-shadow: 0 0 20px #b0b0b0;
   background-color: #fff;
-  position: absolute;
-  top: 20px;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  margin: 20px;
+  /* position: absolute; */
+  /* top: 20px;
   bottom: 20px;
   left: 20px;
-  right: 20px;
+  right: 20px; */
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -108,8 +131,14 @@ const FlipCardStyles = styled.div`
 `
 
 const SkillHeading = styled.div`
-  grid-column: 5;
-  grid-row: 1 / span 2;
+  grid-column: 2 / -2;
+  grid-row: 1 / 6;
+  place-self: center;
+  text-align: center;
+  @media (min-width: 768px) {
+    text-align: left;
+    place-self: end;
+  }
 `
 const slideRight = keyframes`
   0 {
@@ -239,7 +268,7 @@ const [skillSelect, setSkillSelect] = useState('frontend')
  return (
    <SkillsContainer>
      <SkillHeading>
-       <BaseHeading as="h2">My Skills</BaseHeading>
+       <BaseHeading as="h2">My<br></br> Skills</BaseHeading>
        <Toggle>
          <legend>Choose a stack</legend>
          <RadioInput
@@ -271,11 +300,6 @@ const [skillSelect, setSkillSelect] = useState('frontend')
          boxNumber={index}
        />
      ))}
-     <p style={{ gridRow: "4", gridColumn: "2 / span 2" }}>
-       <b>Don't see a skill?</b> I can learn it! I'm always ready to learn new
-       things, and I've proven that I can quickly and effectively become
-       productive with new tools and languages.
-     </p>
      <Scallop flip id={4} />
    </SkillsContainer>
  )
