@@ -1,12 +1,5 @@
 import styled, { css } from 'styled-components'
 import {lightTheme} from "../utils"
-import {typeScale} from "./typography"
-
-export const Heading2 = styled.h2`
-  font-size: ${typeScale.heading2};
-  line-height: 1;
-  margin: 0;
-`
 
 export const Container = styled.section`
   background: ${props => props.background || lightTheme.backgroundColor};

@@ -18,7 +18,7 @@ import Header from "./header"
 const GlobalStyle = createGlobalStyle`
   html {
     --max-width: 114rem;
-    --gutter: 10px;
+    --gutter: 20px;
     --wrapper: calc(100vw - ( 2 * var(--gutter)));
     --noOfColumns: 12;
     --noOfGutters: 11;
@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     --rowHeight: calc(( (var(--wrapper) - (var(--noOfGutters) * var(--gutter))) / var(--noOfColumns)) * var(--factor));
 
     @media (min-width: 1140px) {
-      --gutter: 20px;
+      /* --gutter: 20px; */
       --wrapper: 1140px;
       --noOfGutters: 11;
     }
