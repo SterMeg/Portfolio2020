@@ -5,27 +5,34 @@ import BaseHeading from "./base-heading";
 import border from "../images/border.svg"
 
 const FlipCardStyles = styled.div`
+  --boxOffset: 12;
+  --span: var(--boxOffset);
+  --rowStart: 3;
+  --gridColumnStart: 2;
+  --gridRowStart: calc(
+    ${({ index }) => index} * var(--boxOffset) + var(--rowStart)
+  );
+
   background-color: transparent;
   perspective: 1000px;
   display: grid;
   grid: repeat(6, 1fr) / repeat(6, 1fr);
-  grid-column: 2 / -2;
-  grid-row: span var(--noOfColumns);
+  grid-column: var(--gridColumnStart) / span var(--span);
+  grid-row: var(--gridRowStart) / span var(--span);
   @media (min-width: ${breakpoints.sm}) {
-    --box-columns: calc(var(--noOfColumns) / 1.5);
-    --box-shift: calc(var(--box-columns) / 2);
-    grid-column: calc(${({index}) =>
-      index} * var(--box-shift) + 2) / span var(--box-columns);
-    ${({ index }) =>
-      (index % 2 === 0) &&
-      `
-      grid-column-start: 2;
-    `}
-    grid-row: ${props => props.index * 4 + 3} / span var(--box-columns);
+    --rowStart: 2;
+    --boxOffset: 4;
+    --span: calc(var(--boxOffset) * 2);
+    --gridColumnStart: var(--gridRowStart);
+    &:last-of-type {
+      --gridColumnStart: 2;
+    }
   }
   @media (min-width: ${breakpoints.lg}) {
-    grid-column: ${props => props.index * 3 + 2} / span 6;
-    grid-row: ${props => props.index * 3 + 1} / span 6;
+    --boxOffset: 3;
+    &:last-of-type {
+      --gridColumnStart: var(--gridRowStart);
+    }
   }
 `
 
