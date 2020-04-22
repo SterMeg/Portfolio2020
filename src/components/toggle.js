@@ -1,4 +1,4 @@
-import React from "react"
+import React, {Fragment} from "react"
 import styled, { keyframes } from "styled-components"
 import { breakpoints } from "../utils"
 
@@ -127,23 +127,24 @@ const RadioLabel = styled.label`
 
 
 const Toggle = ({ activeToggle, setActiveToggle, attributes }) => (
- <ToggleStyle>
-  <legend>{attributes.legend}</legend>
-  {attributes.inputs.map(input => (
-    <>
-      <RadioInput 
-        type="radio"
-        name={attributes.name}
-        value={input}
-        id={input}
-        key={input}
-        checked={ activeToggle === input}
-        onChange={ e => setActiveToggle(e.target.value)}
-      />
-      <RadioLabel htmlFor={input}>{input}</RadioLabel>
-    </>
-  ))}
- </ToggleStyle>
+  <ToggleStyle>
+    <legend>{attributes.legend}</legend>
+    {attributes.inputs.map(input => (
+      <Fragment key={input}>
+        <RadioInput
+          type="radio"
+          name={attributes.name}
+          value={input}
+          id={input}
+          checked={activeToggle === input}
+          onChange={e => setActiveToggle(e.target.value)}
+        />
+        <RadioLabel htmlFor={input}>
+          {input}
+        </RadioLabel>
+      </Fragment>
+    ))}
+  </ToggleStyle>
 )
 
 export default Toggle

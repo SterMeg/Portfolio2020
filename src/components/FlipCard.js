@@ -7,10 +7,10 @@ import border from "../images/border.svg"
 const FlipCardStyles = styled.div`
   --boxOffset: 12;
   --span: var(--boxOffset);
-  --rowStart: 3;
+  --startLine: 3;
   --gridColumnStart: 2;
   --gridRowStart: calc(
-    ${({ index }) => index} * var(--boxOffset) + var(--rowStart)
+    ${({ index }) => index} * var(--boxOffset) + var(--startLine)
   );
 
   background-color: transparent;
@@ -20,19 +20,18 @@ const FlipCardStyles = styled.div`
   grid-column: var(--gridColumnStart) / span var(--span);
   grid-row: var(--gridRowStart) / span var(--span);
   @media (min-width: ${breakpoints.sm}) {
-    --rowStart: 2;
+    --startLine: 2;
     --boxOffset: 4;
     --span: calc(var(--boxOffset) * 2);
     --gridColumnStart: var(--gridRowStart);
+  }
+  @media (min-width: ${breakpoints.sm}) and (max-width: ${breakpoints.lg}) {
     &:last-of-type {
       --gridColumnStart: 2;
     }
   }
   @media (min-width: ${breakpoints.lg}) {
     --boxOffset: 3;
-    &:last-of-type {
-      --gridColumnStart: var(--gridRowStart);
-    }
   }
 `
 
@@ -57,10 +56,10 @@ const FlipCardFace = styled.div`
          -webkit-backface-visibility: hidden;
          -moz-backface-visibility: hidden;
          backface-visibility: hidden;
-         transform: ${props =>
-           props.rotated
-             ? "rotate3d(0,1,0,180deg) rotate(-45deg);"
-             : "rotate(-45deg)"};
+         transform: ${({currentSkill}) =>
+            currentSkill === 'frontend'
+             ? "rotate(-45deg)"
+             : "rotate3d(0,1,0,180deg) rotate(-45deg)"};
          &:after {
            border: 4px solid #ff9400;
            border-image: url(${border});
@@ -93,7 +92,7 @@ const ListTitle = styled(BaseHeading)`
 export const FlipCard = ({ list, title, rotated, index }) => (
 <FlipCardStyles index={index}>
   <FlipCardInner rotated={rotated}>
-    {Object.keys(list).map(key => (<FlipCardFace rotated={rotated} key={title + key}>
+    {Object.keys(list).map(key => (<FlipCardFace currentSkill={key} key={title + key}>
       <ul>
         <ListTitle as="h3">
           {title}
