@@ -6,6 +6,7 @@ import BaseHeading from "./base-heading"
 import SectionGrid from "./section-grid"
 import Toggle from "./toggle"
 import { FlipCard } from "./FlipCard"
+import { CardFace } from "./CardFace"
 
 const SkillsContainer = styled(SectionGrid)`
   background: linear-gradient(
@@ -20,20 +21,22 @@ const SkillsContainer = styled(SectionGrid)`
   position: relative;
 `
 
-const allSkills = {
-  skills: { 
+const skillsets = [
+  {
+    title: "skills",
     frontend: ["HTML5", "CSS3", "JavaScript", "Typescript", "React", "Vue"],
     backend: ["Node.js", "Express", "Ruby", "Ruby on Rails", "PHP"]
   },
-  tools: {
-    frontend: ["Webpack", "VS Code", "Git / GitHub", "Gulp", "Command Line"],
-    backend: ["Webpack", "VS Code", "Git / GitHub", "Gulp", "Command Line"]
-  },
-  more: {
+  {
+    title: "tools",
+    frontend: ["Webpack", "VS Code", "Git / GitHub", "Gulp", "Command Line"]
+  }, 
+  {
+    title: "more",
     frontend: ["Jest", "Sass", "CSS-in-JS", "CSS Grid", "CSS Animation"],
     backend: ["PostgreSQL", "MongoDB", "JSON API", "Fast JSON:API"]
   }
-}
+]
 
 const SkillsTitle = styled(BaseHeading)`
   grid-column: 2 / -2;
@@ -66,19 +69,30 @@ const [skillSelect, setSkillSelect] = useState('frontend')
      <SkillsTitle as="h2">
        My<br></br> Skills
      </SkillsTitle>
-     <Toggle 
-        activeToggle={skillSelect}
-        setActiveToggle={setSkillSelect}
-        attributes={skillToggle}
+     <Toggle
+       activeToggle={skillSelect}
+       setActiveToggle={setSkillSelect}
+       attributes={skillToggle}
      />
-     {Object.keys(allSkills).map((key, index) => (
+     {skillsets.map(({title, frontend, backend}, index) => (
        <FlipCard
-         list={allSkills[key]}
-         title={key}
-         rotated={skillSelect === "backend"}
+         rotated={skillSelect === "backend" && backend }
          index={index}
-         key={key}
-       />
+         key={title}
+       >
+         <CardFace
+           face="front"
+           list={frontend}
+           title={title}
+         />
+         {backend && 
+          <CardFace 
+            face="back"
+            list={backend}
+            title={title}
+          />
+         }
+       </FlipCard>
      ))}
      <Scallop flip id={4} />
    </SkillsContainer>

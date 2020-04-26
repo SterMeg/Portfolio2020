@@ -1,8 +1,9 @@
 import React from "react";
-import { lightTheme, breakpoints } from "../utils";
+import { breakpoints } from "../utils";
 import styled from "styled-components"
-import BaseHeading from "./base-heading";
-import border from "../images/border.svg"
+
+import { CardFace } from "./CardFace";
+
 
 const FlipCardStyles = styled.div`
   --boxOffset: 12;
@@ -14,11 +15,11 @@ const FlipCardStyles = styled.div`
   );
 
   background-color: transparent;
-  perspective: 1000px;
   display: grid;
   grid: repeat(6, 1fr) / repeat(6, 1fr);
   grid-column: var(--gridColumnStart) / span var(--span);
   grid-row: var(--gridRowStart) / span var(--span);
+  perspective: 1000px;
   @media (min-width: ${breakpoints.sm}) {
     --startLine: 2;
     --boxOffset: 4;
@@ -47,58 +48,9 @@ const FlipCardInner = styled.div`
     props.rotated ? "rotate3d(0,1,0,180deg)" : "none"};
 `
 
-const FlipCardFace = styled.div`
-         box-shadow: 0 0 20px #b0b0b0;
-         background-color: #fff;
-         grid-row: 1 / -1;
-         grid-column: 1 / -1;
-         margin: 20px;
-         -webkit-backface-visibility: hidden;
-         -moz-backface-visibility: hidden;
-         backface-visibility: hidden;
-         transform: ${({currentSkill}) =>
-            currentSkill === 'frontend'
-             ? "rotate(-45deg)"
-             : "rotate3d(0,1,0,180deg) rotate(-45deg)"};
-         &:after {
-           border: 4px solid #ff9400;
-           border-image: url(${border});
-           border-image-slice: 8;
-           content: "";
-           top: -20px;
-           bottom: -20px;
-           left: -20px;
-           right: -20px;
-           position: absolute;
-         }
-         ul {
-           width: 100%;
-           height: 100%;
-           display: grid;
-           place-content: center;
-           list-style: none;
-           padding: 0;
-           margin: 0;
-           transform: rotate(45deg);
-         }
-       `
-
-const ListTitle = styled(BaseHeading)`
-  text-transform: uppercase;
-  color: ${lightTheme.primaryColor};
-`
-
-
-export const FlipCard = ({ list, title, rotated, index }) => (
+export const FlipCard = ({ rotated, index, children }) => (
 <FlipCardStyles index={index}>
   <FlipCardInner rotated={rotated}>
-    {Object.keys(list).map(key => (<FlipCardFace currentSkill={key} key={title + key}>
-      <ul>
-        <ListTitle as="h3">
-          {title}
-        </ListTitle>
-        {list[key].map(listItem => (<li key={listItem}>{listItem}</li>))}
-      </ul>
-    </FlipCardFace>))}
+    {children}
   </FlipCardInner>
 </FlipCardStyles>);
