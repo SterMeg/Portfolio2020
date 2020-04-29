@@ -1,10 +1,23 @@
 import React from "react"
+import Typewriter from "typewriter-effect"
 import {useSiteMetadata} from "../hooks/useSiteMetadata"
 import { Scallop } from "./svg"
 import SectionGrid from './section-grid'
 import BaseHeading from "./base-heading"
 import AboutImage from "./about-image"
 import styled from "styled-components"
+import { GradientButton }  from "./Button"
+
+const typewriter = [
+  "Full-Stack Developer",
+  "Aerial Artist",
+  "Enthusiastic Learner",
+  "Coffee Conniseur",
+  "Avid Googler",
+  "Pug Lover",
+  "Comic Book Fanatic",
+  "Shower Singer"
+]
 
 const NameCard = styled.figure`
   grid-column: 2 / span 5;
@@ -37,19 +50,19 @@ const NameCard = styled.figure`
   }
 `
 
-const Button = styled.button`
-  background: linear-gradient(to right, #f40e67 0%, #fccd11 100%);
-  color: #fff;
-  display: inline-block;
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 15px 50px;
-  border-radius: 40px;
-  &:hover {
-    color: #fff;
-  }
-`
+// const Button = styled.button`
+//   background: linear-gradient(to right, #f40e67 0%, #fccd11 100%);
+//   color: #fff;
+//   display: inline-block;
+//   font-size: 1.4rem;
+//   font-weight: 600;
+//   text-transform: uppercase;
+//   padding: 15px 50px;
+//   border-radius: 40px;
+//   &:hover {
+//     color: #fff;
+//   }
+// `
 
 const AboutContainer = styled(SectionGrid)`
   grid-template-rows: 69px 115px auto;
@@ -70,19 +83,25 @@ const AboutHeading = styled(BaseHeading)`
 const About = () => {
   const { contact } = useSiteMetadata()
   return (
-    <AboutContainer>
+    <AboutContainer id="about">
       <AboutHeading as="h2">About<br></br>Meghan</AboutHeading>
       <NameCard>
         <AboutImage />
         <figcaption>
           <h3>Meghan Sterling</h3>
-          <h4>Full-Stack Developer</h4>
+          <Typewriter 
+            options={{
+              strings: typewriter,
+              autoStart: true,
+              loop: true
+            }}
+          />
           <p>
             email: <a href={`mailto:${contact}`}>{contact}</a>
           </p>
-          <Button as="a" href="#contact">
+          <GradientButton as="a" href="#contact">
             Contact Me
-          </Button>
+          </GradientButton>
         </figcaption>
       </NameCard>
       <AboutBlurb>

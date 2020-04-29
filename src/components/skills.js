@@ -5,8 +5,7 @@ import styled from "styled-components"
 import BaseHeading from "./base-heading"
 import SectionGrid from "./section-grid"
 import Toggle from "./toggle"
-import { FlipCard } from "./FlipCard"
-import { CardFace } from "./CardFace"
+import { SkillsGrid } from "./SkillsGrid"
 
 const SkillsContainer = styled(SectionGrid)`
   background: linear-gradient(
@@ -20,23 +19,6 @@ const SkillsContainer = styled(SectionGrid)`
   grid-auto-rows: minmax(var(--rowHeight), auto);
   position: relative;
 `
-
-const skillsets = [
-  {
-    title: "skills",
-    frontend: ["HTML5", "CSS3", "JavaScript", "Typescript", "React", "Vue"],
-    backend: ["Node.js", "Express", "Ruby", "Ruby on Rails", "PHP"]
-  },
-  {
-    title: "tools",
-    frontend: ["Webpack", "VS Code", "Git / GitHub", "Gulp", "Command Line"]
-  }, 
-  {
-    title: "more",
-    frontend: ["Jest", "Sass", "CSS-in-JS", "CSS Grid", "CSS Animation"],
-    backend: ["PostgreSQL", "MongoDB", "JSON API", "Fast JSON:API"]
-  }
-]
 
 const SkillsTitle = styled(BaseHeading)`
   grid-column: 2 / -2;
@@ -74,26 +56,7 @@ const [skillSelect, setSkillSelect] = useState('frontend')
        setActiveToggle={setSkillSelect}
        attributes={skillToggle}
      />
-     {skillsets.map(({title, frontend, backend}, index) => (
-       <FlipCard
-         rotated={skillSelect === "backend" && backend }
-         index={index}
-         key={title}
-       >
-         <CardFace
-           face="front"
-           list={frontend}
-           title={title}
-         />
-         {backend && 
-          <CardFace 
-            face="back"
-            list={backend}
-            title={title}
-          />
-         }
-       </FlipCard>
-     ))}
+     <SkillsGrid rotate={skillSelect === "backend" ? true : false}/>
      <Scallop flip id={4} />
    </SkillsContainer>
  )

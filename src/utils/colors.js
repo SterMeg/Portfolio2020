@@ -1,7 +1,9 @@
 export const pink = "#f40e67"
 export const yellow = "#fccd11"
-export const orange = "#c50952"
+export const darkPink = "#c50952"
+export const orange = "#ff9400"
 export const blue = "#F9F9FF"
+export const mainGradient = `linear-gradient(to right, ${pink} 0%, ${yellow} 100%)`
 
 export const neutral = {
   100: "#FFFFFF",
