@@ -6,7 +6,7 @@ import BaseHeading from "./base-heading"
 import { lightTheme } from "../utils"
 import SectionGrid from "./section-grid"
 import { listUnset } from "../utils/layout"
-import { InvertedGradientButton } from "./Button"
+import { GradientButton } from "./GradientButton"
 
 const ProjectsContainer = styled(SectionGrid)`
   grid-row-gap: 20px;
@@ -146,8 +146,8 @@ const Projects = () => {
             </ProjectHeader>
             <p>{project.description}</p>
             <div>
-              {project.url && <InvertedGradientButton as="a" href={project.url}>View Live</InvertedGradientButton>}
-              {project.github && <InvertedGradientButton as="a" href={project.github}>View Code</InvertedGradientButton>}
+              {project.url && <GradientButton as="a" href={project.url}>View Live</GradientButton>}
+              {project.github && <GradientButton as="a" href={project.github}>View Code</GradientButton>}
             </div>
           </div>
           {project.img && (

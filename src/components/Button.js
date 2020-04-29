@@ -10,20 +10,19 @@ export const Button = styled.button`
   font-size: 1.4rem;
   font-weight: 600;
   padding: 15px 50px;
-  position: relative;
 `
 
-export const GradientButton = styled(Button)`
-  background: ${mainGradient};
-  color: #fff;
-  &:hover {
-    color: #fff;
-  }
-  &:after {
-    content: "";
-    background: ${lightTheme.primaryColor};
-  }
-`
+// export const GradientButton = styled(Button)`
+//   background: ${mainGradient};
+//   color: #fff;
+//   &:hover {
+//     color: #fff;
+//   }
+//   &:after {
+//     content: "";
+//     background: ${lightTheme.primaryColor};
+//   }
+// `
 export const InvertedGradientButton = styled(Button)`
     position: relative;
     /* transform: rotate(2deg); */

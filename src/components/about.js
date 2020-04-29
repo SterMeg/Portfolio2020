@@ -6,7 +6,7 @@ import SectionGrid from './section-grid'
 import BaseHeading from "./base-heading"
 import AboutImage from "./about-image"
 import styled from "styled-components"
-import { GradientButton }  from "./Button"
+import { GradientButton }  from "./GradientButton"
 
 const typewriter = [
   "Full-Stack Developer",
