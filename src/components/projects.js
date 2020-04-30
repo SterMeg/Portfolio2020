@@ -6,7 +6,7 @@ import BaseHeading from "./base-heading"
 import { lightTheme } from "../utils"
 import SectionGrid from "./section-grid"
 import { listUnset } from "../utils/layout"
-import { GradientButton } from "./GradientButton"
+import { GradientButton } from "./Button"
 
 const ProjectsContainer = styled(SectionGrid)`
   grid-row-gap: 20px;
@@ -50,10 +50,11 @@ const ProjectsHeading = styled(BaseHeading)`
 `
 
 const ProjectContainer = styled.div`
-  align-content: start;
+  place-content: center;
   background: #f9f9ff;
   display: grid;
   grid-column: 2 / 6;
+  grid-row: span 2;
   padding: 45px;
   grid-template-columns: repeat(auto-fit, minmax(100px, calc(50% - 40px)));
   grid-gap: 40px;
@@ -61,8 +62,12 @@ const ProjectContainer = styled.div`
     margin: 5px;
   }
 `
+const Description = styled.div`
+  grid-row: span 2;
+`
 
 const ImageBorder = styled.a`
+  align-self: start;
   border: 6px solid white;
   box-shadow: -5.84px 6.58px 20px #b0b0b0, inset 0 3px 3px #b0b0b0;
 `
@@ -106,6 +111,19 @@ const SkillList = styled.ul`
   }
 `
 
+const ButtonGrid = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  a:last-of-type {
+    justify-self: end;
+    transform: rotate(5deg);
+  }
+  a:first-of-type {
+    justify-self: start;
+    transform: rotate(-5deg);
+  }
+`
+
 const Projects = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -134,9 +152,11 @@ const Projects = () => {
       <ProjectsHeading as="h2">My Work</ProjectsHeading>
       {data.allProjectsJson.nodes.map(project => (
         <ProjectContainer as="article" key={project.name}>
-          <div>
+          <Description>
             <ProjectHeader>
-              <BaseHeading as="h3" margin="1rem">{project.name}</BaseHeading>
+              <BaseHeading as="h3" margin="1rem">
+                {project.name}
+              </BaseHeading>
               <p>{project.type}</p>
               <SkillList>
                 {project.skills.map(skill => (
@@ -145,16 +165,24 @@ const Projects = () => {
               </SkillList>
             </ProjectHeader>
             <p>{project.description}</p>
-            <div>
-              {project.url && <GradientButton as="a" href={project.url}>View Live</GradientButton>}
-              {project.github && <GradientButton as="a" href={project.github}>View Code</GradientButton>}
-            </div>
-          </div>
+          </Description>
           {project.img && (
             <ImageBorder href={project.url}>
               <Img fluid={project.img.childImageSharp.fluid} />
             </ImageBorder>
           )}
+          <ButtonGrid>
+            {project.url && (
+              <GradientButton as="a" href={project.url}>
+                View Live
+              </GradientButton>
+            )}
+            {project.github && (
+              <GradientButton as="a" href={project.github}>
+                View Code
+              </GradientButton>
+            )}
+          </ButtonGrid>
         </ProjectContainer>
       ))}
     </ProjectsContainer>

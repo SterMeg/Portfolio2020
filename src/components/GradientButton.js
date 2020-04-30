@@ -3,28 +3,47 @@ import { gsap } from "gsap"
 import styled from "styled-components"
 import { GradientMask } from "./svg"
 import { Button } from "./Button"
-
-const ButtonContainer = styled.div`
-  display: grid;
-  margin: 0 auto;
-  width: max-content;
-`
+import { lightTheme, orange } from "../utils"
 
 const GradientMaskStyles = styled(GradientMask)`
   border-radius: 40px;
-  grid-area: 1 / 1 / -1 / -1;
-  height: 100%;
+  left: 0;
+  top: 0;
   pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 ` 
 
 const GradientButtonStyles = styled(Button)`
   color: white;
-  grid-area: 1 / 1 / -1 / -1;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-image: linear-gradient(45deg, ${lightTheme.primaryColor} 20%, ${orange} 85%, ${lightTheme.secondaryColor});
+    z-index: -1;
+    transition: transform 0.8s ease;
+    will-change: transform;
+  }
+  &:hover {
+    &:before {
+      transform: translateX(50%);
+    }
+  }
 `
 
-export const GradientButton = ({ props, children }) => {
+export const GradientButton = ({ children, ...rest }) => {
   const ref = React.createRef()
   const handleHoverFocus = () => {
+    console.log(ref)
     gsap.to(ref.current, {
       duration: 0.5,
       attr: {offset: 1},
@@ -41,11 +60,15 @@ export const GradientButton = ({ props, children }) => {
   }
 
   return (
-    <ButtonContainer>
-      <GradientMaskStyles ref={ref} />
-      <GradientButtonStyles onMouseEnter={handleHoverFocus} onFocus={handleHoverFocus} onMouseLeave={handleLeave} onBlur={handleLeave} {...props}>
+      <GradientButtonStyles
+        // onMouseEnter={handleHoverFocus}
+        // onFocus={handleHoverFocus}
+        // onMouseLeave={handleLeave}
+        // onBlur={handleLeave}
+        {...rest}
+      >
+        {/* <GradientMaskStyles ref={ref} /> */}
         {children}
       </GradientButtonStyles>
-    </ButtonContainer>
   )
 }

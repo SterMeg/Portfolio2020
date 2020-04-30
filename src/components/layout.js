@@ -43,14 +43,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${typeScale.paragraph};
     line-height: 1.6;
   }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    &:hover {
-      color: ${lightTheme.linkHover}
-    }
-  }
 `
 
 const PageLayout = styled.div`

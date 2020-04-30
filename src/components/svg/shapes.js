@@ -52,7 +52,7 @@ export const Shapes = () => (
                >
                  <feOffset dx="-17.366" dy="17.983" />
                  <feGaussianBlur stdDeviation="7.5" result="blur-3" />
-                 <feFlood flood-color="#aeaeae" flood-opacity=".502" />
+                 <feFlood floodColor="#aeaeae" floodOpacity=".502" />
                  <feComposite operator="in" in2="blur-3" />
                  <feComposite in="SourceGraphic" />
                </filter>
@@ -66,7 +66,7 @@ export const Shapes = () => (
                >
                  <feOffset dx="-17.366" dy="17.983" />
                  <feGaussianBlur stdDeviation="7.5" result="blur-4" />
-                 <feFlood flood-color="#aeaeae" flood-opacity=".502" />
+                 <feFlood floodColor="#aeaeae" floodOpacity=".502" />
                  <feComposite operator="in" in2="blur-4" />
                  <feComposite in="SourceGraphic" />
                </filter>
@@ -80,7 +80,7 @@ export const Shapes = () => (
                >
                  <feOffset dx="-17.366" dy="17.983" />
                  <feGaussianBlur stdDeviation="7.5" result="blur-5" />
-                 <feFlood flood-color="#aeaeae" flood-opacity=".502" />
+                 <feFlood floodColor="#aeaeae" floodOpacity=".502" />
                  <feComposite operator="in" in2="blur-5" />
                  <feComposite in="SourceGraphic" />
                </filter>
