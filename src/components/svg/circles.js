@@ -1,12 +1,17 @@
 import React from "react"
 import styled from "styled-components"
+import { breakpoints } from "../../utils"
 
 const CirclesSvg = styled.svg`
-  position: absolute;
-  width: 110%;
-  top: -35%;
-  left: -22%;
-  @media (min-width: 940px) {
+  display: none;
+  @media (min-width: ${breakpoints.md}) {
+    display: block;
+    position: absolute;
+    width: 110%;
+    top: -35%;
+    left: -22%;
+  }
+  @media (min-width: ${breakpoints.lg}) {
     width: 130%;
   }
 `

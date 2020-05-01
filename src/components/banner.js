@@ -1,11 +1,13 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
-import BannerImage from "./banner-image"
-import { Container, GradientText, LinkList } from "../utils/layout"
+import BannerImage from "./BannerImage"
+import { GradientText, LinkList } from "../utils/layout"
+import SectionGrid from "./section-grid"
 import { Scallop, Circles, Shapes } from "./svg"
 import { lightTheme } from "../utils"
 import styled from "styled-components"
+import { breakpoints } from "../utils"
 
 const socialLinks = [
   { name: "Github", url: "https://github.com/SterMeg" },
@@ -25,13 +27,24 @@ const socialLinks = [
 ]
 
 const NameCard = styled.div`
-  align-self: center;
-  align-items: flex-start;
+  grid-row-start: 1;
+  align-self: end;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  grid-column: 2 / span 4;
-  @media (min-width: 550px) {
-    grid-column: 2 / span 2;
+  grid-column: 2 / span 12;
+  text-align: center;
+  padding-bottom: 100px;
+  z-index: 1;
+  @media (min-width: ${breakpoints.md}) {
+    padding-bottom: 0;
+    align-self: center;
+    align-items: flex-start;
+    grid-column: 2 / span 7;
+    text-align: left;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    grid-column: 2 / span 6;
   }
   h3 {
     text-transform: uppercase;
@@ -52,21 +65,33 @@ const H1 = styled(GradientText)`
     font-size: 2rem;
     position: absolute;
     -webkit-text-fill-color: #fff;
+    @media (min-width: ${breakpoints.sm}) {
+    }
   }
   &::before {
     border-radius: 50% 50% 50% 0;
     content: "Hello";
     padding: 30px 15px;
-    right: -13%;
-    top: -35%;
+    left: 1%;
+    top: -46%;
+    @media (min-width: ${breakpoints.sm}) {
+      left: unset;
+      right: -13%;
+      top: -35%;
+    }
   }
   &::after {
     border: 2px solid #fff;
     border-radius: 50% 50% 0 50%;
     content: "I am";
     padding: 20px 10px;
-    right: -20%;
-    top: -2%;
+    left: 20%;
+    top: -25%;
+    @media (min-width: ${breakpoints.sm}) {
+      left: unset;
+      right: -20%;
+      top: -2%;
+    }
   }
 `
 
@@ -83,26 +108,32 @@ const ExternalLinks = styled(LinkList)`
   }
 `
 
-const BannerContainer = styled(Container)`
+const BannerContainer = styled(SectionGrid)`
   min-height: 100vh;
-  /* grid-template-rows: 1fr max-content 1fr; */
+  padding: 0;
 `
 
 const ImageContainer = styled.div`
-  display: none;
-  @media (min-width: 550px) {
-    display: block;
-    grid-column: 4 / span 2;
-    grid-row: 1;
+  padding-top: 100px;
+  grid-column: 2 / -2;
+  grid-row: 1;
+  position: relative;
+  .gatsby-image-wrapper {
+    display: none;
+  }
+  @media (min-width: ${breakpoints.md}) {
+    padding-top: 0;
+    grid-column: 9 / span 5;
     align-self: end;
-    position: relative;
     max-width: 418px;
     left: 50%;
-    transform: translateX(-50%)
-    /* > div {
-      max-width: 418px;
-      margin: auto;
-    } */
+    transform: translateX(-50%);
+    .gatsby-image-wrapper {
+      display: block;
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    grid-column: 8 / span 6;
   }
 `
 

@@ -1,11 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import { breakpoints } from "../../utils"
 
 const ShapesSvg = styled.svg`
-  position: absolute;
   width: 100%;
-  left: -11%;
-  top: -21%;
+  @media (min-width: ${breakpoints.md}) {
+    left: -11%;
+    position: absolute;
+    top: -21%;
+  }
 `
 
 export const Shapes = () => (
