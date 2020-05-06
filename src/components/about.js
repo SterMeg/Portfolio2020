@@ -8,6 +8,7 @@ import AboutImage from "./about-image"
 import styled from "styled-components"
 import { GradientButton }  from "./Button"
 import { TextLink } from "./TextLink"
+import { breakpoints } from "../utils"
 
 const typewriter = [
   "Full-Stack Developer",
@@ -21,14 +22,46 @@ const typewriter = [
 ]
 
 const NameCard = styled.figure`
-  grid-column: 2 / span 5;
-  grid-row: 2 / span 2;
-  box-shadow: -20.84px 21.58px 30px #b0b0b0;
+  box-shadow: -6.84px 3.58px 21px #b0b0b0;
+  display: grid;
+  grid-column: 2 / -2;
+  grid-row: span 2;
+  @media (min-width: ${breakpoints.sm}) {
+    box-shadow: none;
+    grid-template-columns: 2fr 0.25fr 2fr;
+    grid-row: 2 / span 2;
+    grid-template-rows: 115px auto 50px;
+    .gatsby-image-wrapper {
+      grid-row: 1 / span 2;
+      grid-column: 1 / span 2;
+    }
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    box-shadow: -20.84px 21.58px 30px #b0b0b0;
+    grid-column: 2 / span 5;
+  }
   align-self: start;
   margin: 0;
   figcaption {
-    text-align: center;
+    display: grid;
+    align-content: center;
+    justify-items: center;
     padding: 50px;
+    text-align: center;
+    @media (min-width: ${breakpoints.sm}) {
+      box-shadow: -20.84px 21.58px 30px #b0b0b0;
+      grid-row: 2 / span 2;
+      grid-column: 2 / span 2;
+      background: white;
+      z-index: 1;
+    }
+    @media (min-width: ${breakpoints.lg}) {
+      box-shadow: none;
+      grid-column: 1;
+      grid-row: auto;
+    }
     h3 {
       text-transform: uppercase;
     }
@@ -51,34 +84,34 @@ const NameCard = styled.figure`
   }
 `
 
-// const Button = styled.button`
-//   background: linear-gradient(to right, #f40e67 0%, #fccd11 100%);
-//   color: #fff;
-//   display: inline-block;
-//   font-size: 1.4rem;
-//   font-weight: 600;
-//   text-transform: uppercase;
-//   padding: 15px 50px;
-//   border-radius: 40px;
-//   &:hover {
-//     color: #fff;
-//   }
-// `
-
 const AboutContainer = styled(SectionGrid)`
-  grid-template-rows: 69px 115px auto;
+  grid-row-gap: 20px;
+  grid-template-rows: 115px auto;
   position: relative;
   text-align: justify;
+  @media (min-width: ${breakpoints.sm}) {
+    grid-template-rows: 69px 115px auto;
+  }
 `
 
 const AboutBlurb = styled.div`
-  grid-column: 8 / span 6;
-  grid-row: 3;
+  grid-column: 2 / -2;
+  @media (min-width: ${breakpoints.lg}) {
+    grid-column: 8 / span 6;
+    grid-row: 3;
+  }
 `
 const AboutHeading = styled(BaseHeading)`
-  grid-column: 6 / -2;
-  grid-row: 1 / span 2;
+  grid-column: 2 / -2;
+  text-align: right;
+  transform: rotate(-8deg);
   z-index: 5;
+  @media (min-width: ${breakpoints.sm}) {
+    grid-column: 6 / -2;
+    grid-row: 1 / span 2;
+    text-align: left;
+    transform: rotate(0);
+  }
 `
  
 const About = () => {

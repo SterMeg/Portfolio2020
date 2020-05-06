@@ -6,10 +6,10 @@ const SectionGrid = styled.section`
   background: ${props => props.background || lightTheme.backgroundColor};
   display: grid;
   grid-template-columns:
-    calc(50vw - ((var(--max-width) / 2) + 2rem))
+    calc(50vw - ((var(--max-width) / 2)))
     repeat(12, 1fr)
-    calc(50vw - ((var(--max-width) / 2) + 2rem));
-  grid-column-gap: var(--gutter);
+    calc(50vw - ((var(--max-width) / 2)));
+    grid-column-gap: var(--gutter);
   padding: 150px 0;
 ` 
 

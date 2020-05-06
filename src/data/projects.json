@@ -6,9 +6,9 @@
       "Gatsby",
       "TailwindCSS"
     ],
-    "description": "I wanted to help local businesses being impacted by COVID-19. I knew of many that had pivoted to offering shopping alternatives, but it was hard to find which stores were still operating without knowing the store and following their social media. I created a quick build with the Gatsby Tailwind Starter with the goal of creating better visibility for who is offering alternative, and what they are.",
+    "description": "Shop Guelph Local was a fast build using a Gatsby Tailwind starter with the goal of helping local businesses impacted by COVID-19. Inspired by <a href='https: //togethertech.ca/local'>Together Tech</a>, this crowd-sourced page lists Guelph businesses offering shopping alternatives like curbside pickup and delivery.",
     "url": "https://shop-guelph-local.info/",
-    "github": "https://github.com/SterMeg/marvelmemes",
+    "github": "https://github.com/SterMeg/guelph-local",
     "showOnPortfolio": true,
     "img": "../images/projects/shop-guelph.png"
   },

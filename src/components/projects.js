@@ -7,39 +7,95 @@ import { lightTheme } from "../utils"
 import SectionGrid from "./section-grid"
 import { listUnset } from "../utils/layout"
 import { GradientButton } from "./Button"
+import { breakpoints } from "../utils"
+
+const Description = styled.div`
+  grid-row: span 2;
+  align-self: center;
+`
+const ImageBorder = styled.a`
+  align-self: start;
+  border: 6px solid white;
+  box-shadow: -5.84px 6.58px 20px #b0b0b0, inset 0 3px 3px #b0b0b0;
+  grid-row: 1;
+  @media (min-width: ${breakpoints.md}) {
+    grid-row: auto;
+  }
+`
+const ButtonGrid = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  a {
+    transition: transform 0.5s ease;
+  }
+  a:last-of-type {
+    justify-self: end;
+    transform: rotate(5deg);
+    &:hover {
+      transform: rotate(6deg) translateY(3px);
+    }
+  }
+  a:first-of-type {
+    justify-self: start;
+    transform: rotate(-5deg);
+    &:hover {
+      transform: rotate(-6deg) translateY(3px);
+    }
+  }
+`
 
 const ProjectsContainer = styled(SectionGrid)`
   grid-row-gap: 20px;
   article {
-    &:first-of-type {
-      grid-column: 2 / span 4;
-      grid-row: 2 / span 2;
-      grid-template-columns: auto;
-      a {
-        order: -1;
-      }
-    }
-    &:nth-of-type(2) {
-      grid-row: 2;
-      grid-column: 6 / span 8;
-    }
+    grid-column: 2 / -2;
+    max-width: 500px;
+    justify-self: center;
     &:nth-of-type(3) {
-      grid-row: 3;
-      grid-column: 6 / span 4;
-      grid-template-columns: auto;
       background: #fff;
       box-shadow: -5.84px 6.58px 20px #b0b0b0;
     }
-    &:nth-of-type(4) {
-      grid-row: 3 / span 2;
-      grid-column: 10 / span 4;
-      grid-template-columns: auto;
-      a {
-        order: -1;
+    @media (min-width: ${breakpoints.md}) {
+      max-width: unset;
+    }
+    @media (min-width: ${breakpoints.md}) and (max-width: ${breakpoints.lg}) {
+      &:nth-of-type(even) > ${Description} {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+      &:nth-of-type(3) > ${ButtonGrid} {
+        place-self: center;
+        grid-row: span 2;
       }
     }
-    &:nth-of-type(5) {
-      grid-column: 2 / span 8;
+    @media (min-width: ${breakpoints.lg}) {
+      &:first-of-type {
+        grid-column: 2 / span 4;
+        grid-row: 2 / span 2;
+        grid-template-columns: auto;
+        ${Description} {
+          grid-row: 2;
+        }
+      }
+      &:nth-of-type(2) {
+        grid-row: 2;
+        grid-column: 6 / span 8;
+      }
+      &:nth-of-type(3) {
+        grid-row: 3;
+        grid-column: 6 / span 4;
+        grid-template-columns: auto;
+      }
+      &:nth-of-type(4) {
+        grid-row: 3 / span 2;
+        grid-column: 10 / span 4;
+        grid-template-columns: auto;
+        a {
+          order: -1;
+        }
+      }
+      &:nth-of-type(5) {
+        grid-column: 2 / span 8;
+      }
     }
   }
 `
@@ -56,20 +112,13 @@ const ProjectContainer = styled.div`
   grid-column: 2 / 6;
   grid-row: span 2;
   padding: 45px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, calc(50% - 40px)));
+  @media (min-width: ${breakpoints.md}) {
+    grid-template-columns: 1fr 1fr;
+  }
   grid-gap: 40px;
   .gatsby-image-wrapper {
     margin: 5px;
   }
-`
-const Description = styled.div`
-  grid-row: span 2;
-`
-
-const ImageBorder = styled.a`
-  align-self: start;
-  border: 6px solid white;
-  box-shadow: -5.84px 6.58px 20px #b0b0b0, inset 0 3px 3px #b0b0b0;
 `
 
 const ProjectHeader = styled.header`
@@ -111,18 +160,9 @@ const SkillList = styled.ul`
   }
 `
 
-const ButtonGrid = styled.div`
-  display: grid;
-  grid-gap: 10px;
-  a:last-of-type {
-    justify-self: end;
-    transform: rotate(5deg);
-  }
-  a:first-of-type {
-    justify-self: start;
-    transform: rotate(-5deg);
-  }
-`
+function createDescription(project) {
+  return {__html: project.description}
+}
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
@@ -164,7 +204,7 @@ const Projects = () => {
                 ))}
               </SkillList>
             </ProjectHeader>
-            <p>{project.description}</p>
+            <p dangerouslySetInnerHTML={createDescription(project)}/>
           </Description>
           {project.img && (
             <ImageBorder href={project.url}>

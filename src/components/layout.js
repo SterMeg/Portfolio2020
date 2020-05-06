@@ -18,7 +18,7 @@ import Header from "./header"
 const GlobalStyle = createGlobalStyle`
   html {
     --max-width: 114rem;
-    --gutter: 20px;
+    --gutter: 2rem;
     --wrapper: calc(100vw - ( 2 * var(--gutter)));
     --allColumns: 14;
     --noOfColumns: 12;
@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
 
     @media (min-width: 1140px) {
       --wrapper: 1140px;
-      --noOfGutters: 11;
+      --noOfGutters: 13;
     }
 
     font-size: 62.5%;
