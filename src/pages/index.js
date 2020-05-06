@@ -1,10 +1,10 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import Banner from "../components/Banner"
 import About from "../components/about"
 import Skills from "../components/skills"
 import Projects from "../components/projects"
+import { BottomBanner, Banner } from "../sections"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -15,6 +15,7 @@ const IndexPage = () => {
       <About />
       <Skills />
       <Projects />
+      <BottomBanner />
     </Layout>
   )
 }

@@ -3,11 +3,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import BaseHeading from "./base-heading"
-import { lightTheme } from "../utils"
+import { lightTheme, breakpoints } from "../utils"
 import SectionGrid from "./section-grid"
 import { listUnset } from "../utils/layout"
 import { GradientButton } from "./Button"
-import { breakpoints } from "../utils"
+import { Scallop } from "./svg"
 
 const Description = styled.div`
   grid-row: span 2;
@@ -46,6 +46,7 @@ const ButtonGrid = styled.div`
 
 const ProjectsContainer = styled(SectionGrid)`
   grid-row-gap: 20px;
+  position: relative;
   article {
     grid-column: 2 / -2;
     max-width: 500px;
@@ -225,6 +226,7 @@ const Projects = () => {
           </ButtonGrid>
         </ProjectContainer>
       ))}
+      <Scallop id={5} />
     </ProjectsContainer>
   )
 }

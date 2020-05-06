@@ -11,6 +11,7 @@ const SectionGrid = styled.section`
     calc(50vw - ((var(--max-width) / 2)));
     grid-column-gap: var(--gutter);
   padding: 150px 0;
+  position: relative;
 ` 
 
 export default SectionGrid;

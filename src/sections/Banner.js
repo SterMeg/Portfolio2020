@@ -1,10 +1,10 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
-import BannerImage from "./BannerImage"
+import BannerImage from "../components/BannerImage"
 import { GradientText, LinkList } from "../utils/layout"
-import SectionGrid from "./section-grid"
-import { Scallop, Circles, Shapes } from "./svg"
+import SectionGrid from "../components/section-grid"
+import { Scallop, Circles, Shapes } from "../components/svg"
 import { lightTheme } from "../utils"
 import styled from "styled-components"
 import { breakpoints } from "../utils"
@@ -149,7 +149,7 @@ const linkIcon = linkName => {
   return linkMap[linkName];
 }
 
-const Banner = () => (
+export const Banner = () => (
   <BannerContainer background={lightTheme.accentColor}>
     <NameCard>
       <H1 as="h1">
@@ -173,5 +173,3 @@ const Banner = () => (
     <Scallop flip id={2}/>
   </BannerContainer>
 )
-
-export default Banner;
