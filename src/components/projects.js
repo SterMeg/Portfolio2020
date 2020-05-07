@@ -226,7 +226,6 @@ const Projects = () => {
           </ButtonGrid>
         </ProjectContainer>
       ))}
-      <Scallop id={5} />
     </ProjectsContainer>
   )
 }

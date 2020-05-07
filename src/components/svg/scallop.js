@@ -11,8 +11,8 @@ const ScallopPattern = styled.svg`
   z-index: 5;
 `
 
-export const Scallop = ({ flip, id }) => (
-         <ScallopPattern xmlns="http://www.w3.org/2000/svg" flip={flip}>
+export const Scallop = ({ flip, id, className }) => (
+         <ScallopPattern xmlns="http://www.w3.org/2000/svg" flip={flip} className={className}>
            <pattern
              id={`swoop${id}`}
              x="0"

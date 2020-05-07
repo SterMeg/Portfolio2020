@@ -13,6 +13,14 @@ export const Button = styled.button`
   text-decoration: none;
 `
 
+export const LightButton = styled(Button)`
+         background: ${lightTheme.textColorInverted};
+         box-shadow: -14px 14px 20px 0px rgba(98, 98, 98, 0.2);
+         &:hover {
+           box-shadow: -6px 6px 5px 0px rgba(98, 98, 98, 0.2);
+         }
+       `
+
 export const GradientButton = styled(Button)`
   color: white;
   position: relative;

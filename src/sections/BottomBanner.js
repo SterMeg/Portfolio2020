@@ -1,21 +1,65 @@
 import React from "react"
+import styled from "styled-components"
 import SectionGrid from "../components/section-grid"
-import { lightTheme } from "../utils"
+import { lightTheme, breakpoints } from "../utils"
 import { Scallop } from "../components/svg"
+import BannerImage from "../components/BannerImage"
 import BaseHeading from "../components/base-heading"
+import { LightButton } from "../components/Button"
+
+const BottomBannerStyles = styled(SectionGrid)`
+  grid-template-rows: 1fr 40px 4fr;
+  padding: 0;
+  &:before {
+    content: "";
+    background: #fff;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  `
+
+const BannerImageWrapper = styled.div`
+  display: none;
+  @media (min-width: ${breakpoints.md}) {
+    display: block;
+    grid-column: 8 / span 6;
+    grid-row: 1 / -1;
+  }
+`
+const UpperScallop = styled(Scallop)`
+  position: static;
+  grid-row: 2;
+  z-index: unset;
+`
+
+const BannerText = styled.div`
+  grid-column: 2 / -2;
+  color: #fff;
+  grid-row: 3;
+  align-self: center;
+  padding: 40px 0 80px;
+  @media (min-width: ${breakpoints.md}) {
+    grid-column: 2 / 8;
+  }
+`
 
 export const BottomBanner = () => (
-         <SectionGrid background={lightTheme.mainGradient}>
-           <BaseHeading
-             as="h2"
-             css={`
-               font-size: 4rem;
-               color: #fff;
-               grid-column: 2 / 8;
-             `}
-           >
-             Chat about coding, comics, or coffee!
-           </BaseHeading>
+         <BottomBannerStyles background={lightTheme.mainGradient}>
+          <UpperScallop id={7} />
+          <BannerText>
+            <BaseHeading
+              as="h2"
+              css={`font-size: 4rem; margin-bottom: 40px;`}
+            >
+              Chat about coding, comics, or coffee!
+            </BaseHeading>
+            <LightButton>
+              Contact Me  
+            </LightButton>
+          </BannerText>
+           <BannerImageWrapper>
+             <BannerImage />
+           </BannerImageWrapper>
            <Scallop id={6} flip />
-         </SectionGrid>
+         </BottomBannerStyles>
        )
