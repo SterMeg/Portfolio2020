@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { mainGradient, lightTheme, orange } from "../utils"
+import { lightTheme, orange } from "../../utils"
 
 export const Button = styled.button`
   background: none;

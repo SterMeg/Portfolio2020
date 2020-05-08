@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {lightTheme} from "../utils"
+import {lightTheme} from "../../utils"
 
 export const TextLink = styled.a`
   color: inherit;

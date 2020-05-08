@@ -2,12 +2,10 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
-import BaseHeading from "./base-heading"
 import { lightTheme, breakpoints } from "../utils"
-import SectionGrid from "./section-grid"
-import { listUnset } from "../utils/layout"
-import { GradientButton } from "./Button"
-import { Scallop } from "./svg"
+import { BaseHeading, SectionGrid, listUnset, GradientButton } from "./styled"
+
+
 
 const Description = styled.div`
   grid-row: span 2;

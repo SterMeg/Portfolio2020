@@ -1,11 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import SectionGrid from "../components/section-grid"
 import { lightTheme, breakpoints } from "../utils"
 import { Scallop } from "../components/svg"
 import BannerImage from "../components/BannerImage"
-import BaseHeading from "../components/base-heading"
-import { LightButton } from "../components/Button"
+import { LightButton, BaseHeading, SectionGrid } from "../components/styled"
 
 const BottomBannerStyles = styled(SectionGrid)`
   grid-template-rows: 1fr 40px 4fr;

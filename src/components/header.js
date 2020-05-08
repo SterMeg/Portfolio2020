@@ -1,11 +1,12 @@
 import React from "react"
-import { Container } from "../utils/layout"
+import { SectionGrid } from "./styled"
 import { Logo, Scallop } from './svg'
 import styled from 'styled-components'
 import { Link } from "gatsby"
 import SiteLinks from "./site-links"
 
-const HeaderContainer = styled(Container)`
+const HeaderContainer = styled(SectionGrid)`
+  padding: 0;
   position: fixed;
   width: 100%;
   z-index: 10;
@@ -13,7 +14,7 @@ const HeaderContainer = styled(Container)`
 const Nav = styled.nav`
   align-items: center;
   display: flex;
-  grid-column: 2 / span 4;
+  grid-column: 2 / -2;
   justify-content: space-between;
   padding: 10px 0 0;
 `

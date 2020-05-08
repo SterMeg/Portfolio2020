@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import About from "../components/about"
 import Skills from "../components/skills"
 import Projects from "../components/projects"
-import { BottomBanner, Banner } from "../sections"
+import { BottomBanner, Banner, Contact } from "../sections"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -16,6 +16,7 @@ const IndexPage = () => {
       <Skills />
       <Projects />
       <BottomBanner />
+      <Contact />
     </Layout>
   )
 }

@@ -1,13 +1,11 @@
 import React from "react"
 import Typewriter from "typewriter-effect"
+import styled from "styled-components"
+
 import {useSiteMetadata} from "../hooks/useSiteMetadata"
 import { Scallop } from "./svg"
-import SectionGrid from './section-grid'
-import BaseHeading from "./base-heading"
+import { SectionGrid, BaseHeading, GradientButton, TextLink } from "./styled"
 import AboutImage from "./about-image"
-import styled from "styled-components"
-import { GradientButton }  from "./Button"
-import { TextLink } from "./TextLink"
 import { breakpoints } from "../utils"
 
 const typewriter = [

@@ -1,12 +1,18 @@
 import styled, { css } from 'styled-components'
-import {lightTheme} from "../utils"
+import {lightTheme} from "../../utils"
 
-export const Container = styled.section`
+export const SectionGrid = styled.section`
+  /* Only 2 colors used, prop to alternate instead of sending color?  */
   background: ${props => props.background || lightTheme.backgroundColor};
   display: grid;
-  grid-template-columns: 1fr repeat(4, minmax(55px, 275px)) 1fr;
-  grid-column-gap: 20px;
-`
+  grid-template-columns:
+    calc(50vw - ((var(--max-width) / 2)))
+    repeat(12, 1fr)
+    calc(50vw - ((var(--max-width) / 2)));
+    grid-column-gap: var(--gutter);
+  padding: 150px 0;
+  position: relative;
+` 
 
 export const GradientText = styled.span`
   font-weight: 900;

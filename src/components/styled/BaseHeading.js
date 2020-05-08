@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { typeScale } from "../utils"
+import { typeScale } from "../../utils"
 
 const BaseHeading = styled.h1`
   font-size: ${({ as }) => typeScale[as]};

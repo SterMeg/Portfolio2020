@@ -1,13 +1,13 @@
 import React from 'react'
+import styled from "styled-components"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
-import BannerImage from "../components/BannerImage"
-import { GradientText, LinkList } from "../utils/layout"
-import SectionGrid from "../components/section-grid"
 import { Scallop, Circles, Shapes } from "../components/svg"
-import { lightTheme } from "../utils"
-import styled from "styled-components"
-import { breakpoints } from "../utils"
+import { lightTheme, breakpoints } from "../utils"
+import BannerImage from "../components/BannerImage"
+import { GradientText, LinkList, SectionGrid } from "../components/styled"
+
 
 const socialLinks = [
   { name: "Github", url: "https://github.com/SterMeg" },

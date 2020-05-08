@@ -1,5 +1,5 @@
 import React from 'react'
-import { LinkList } from '../utils/layout'
+import { LinkList } from './styled'
 
 const links = ["About", "Skills", "Projects", "Contact"]
 // Once blog page added,

@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import BaseHeading from "./base-heading"
+import { BaseHeading } from "./styled"
 import { lightTheme } from "../utils"
 import border from "../images/border.svg"
 
