@@ -2,37 +2,6 @@ import React, {Fragment} from "react"
 import styled, { keyframes } from "styled-components"
 import { breakpoints } from "../utils"
 
-// Width transform bad. Use GSAP?
-const slideRight = keyframes`
-  0 {
-    width: 3rem;
-    transform: translateX(0);
-  }
-  50% {
-    width: 6rem;
-    transform: translateX(-.5rem);
-  }
-  100% {
-    width: 3rem;
-    transform: translateX(-3rem);
-  }
-`
-
-const slideLeft = keyframes`
-  0% {
-    width: 3rem;
-    transform: translateX(-3rem);
-  }
-  50% {
-    width: 6rem;
-    transform: translateX(-.5rem);
-  }
-  100% {
-    width: 3rem;
-    transform: translateX(0);
-  }
-`
-
 //Grid positioning should be passed in
 const ToggleStyle = styled.fieldset`
   border: none;
@@ -71,10 +40,7 @@ const RadioInput = styled.input`
     background-color: #dddddd;
   }
   &:first-of-type:checked ~ label:first-of-type:before {
-    animation: ${slideRight} 0.8s forwards ease-in-out;
-  }
-  &:first-of-type:not(:checked) ~ label:first-of-type:before {
-    animation: ${slideLeft} 0.8s forwards ease-in-out;
+    transform: translateX(-3rem);
   }
   &:last-of-type:checked ~ label:last-of-type {
     z-index: 1;
@@ -99,26 +65,29 @@ const RadioLabel = styled.label`
   &:first-of-type:before,
   &:first-of-type:after {
     content: "";
-    height: calc(100% - 1.2rem);
     overflow: hidden;
     pointer-events: none;
     position: absolute;
     vertical-align: middle;
-    width: 6rem;
+    width: 7rem;
   }
   &:first-of-type:before {
     background: linear-gradient(to right, #fccd11 0%, #f40e68 100%);
     border-radius: 5rem;
     position: absolute;
+    height: calc(100% - 1.2rem);
     top: 0.6rem;
-    right: 0.25rem;
+    right: 0.5rem;
+    transition: transform 0.3s ease-in-out;
     z-index: 2;
+    width: 3rem;
   }
   &:first-of-type:after {
     border: 1px solid #eee;
     background-color: #222;
     border-radius: 5rem;
     padding: 0.5rem;
+    height: 100%;
     background-clip: content-box;
     transition: background-color 1s ease-in-out;
     margin: 0 1rem;

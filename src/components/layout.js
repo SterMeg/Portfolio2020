@@ -64,6 +64,7 @@ const Footer = styled.footer`
   align-self: end;
   text-align: center;
   padding: 16px 0;
+  font-size: ${typeScale.copyrightText};
 `
 const Layout = ({ children }) => {
   const [theme, setTheme] = useState('light')
