@@ -1,7 +1,7 @@
-import react from "react"
+import React from "react"
 
-const Resume = () => {
-
-}
+const Resume = () => (
+    <p>Work in progress</p>
+)
 
 export default Resume

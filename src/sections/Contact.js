@@ -13,7 +13,7 @@ export const ContactForm = styled.form`
     grid-template-rows: repeat(3, 75px) 1fr;
     @media (min-width: ${breakpoints.md}) {
         grid-template-columns: 1fr 2fr;
-        grid-template-rows: auto;
+        grid-template-rows: repeat(3, 75px);
     }
     textarea {
         width: calc(100% - 20px);
@@ -56,12 +56,14 @@ export const InputGroupStyle = styled.label`
     > input, textarea {
         background: ${lightTheme.accentColor};
         border: none;
+        display: block;
         padding: 15px;
         margin: 10px;
         border-radius: inherit;
         grid-row: 1 / -1;
         grid-column: 1 / -1;
         z-index: 2;
+        resize: none;
     } 
 `;
 

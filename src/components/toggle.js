@@ -1,5 +1,5 @@
 import React, {Fragment} from "react"
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import { breakpoints } from "../utils"
 
 //Grid positioning should be passed in
