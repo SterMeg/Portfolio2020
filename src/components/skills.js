@@ -46,7 +46,7 @@ const skillToggle = {
 const Skills = () => {
 const [skillSelect, setSkillSelect] = useState('frontend')
  return (
-   <SkillsContainer>
+   <SkillsContainer id="skills">
      <SkillsTitle as="h2">
        My<br></br> Skills
      </SkillsTitle>

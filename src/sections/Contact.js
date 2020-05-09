@@ -120,11 +120,17 @@ const InputGroup = ({name, type}) => {
 export const Contact = () => {
     const { contact } = useSiteMetadata()
     return (
-        <SectionGrid css={`grid-column: 2 / -2; min-height: 80vh; grid-row-gap: 20px;  background: linear-gradient(
-            to bottom,
-            #fff 90%,
-            #f9f9ff 95%
-          );`}>
+        <SectionGrid 
+            id="contact"
+            css={`
+            grid-column: 2 / -2; 
+            min-height: 80vh; 
+            grid-row-gap: 20px;  
+            background: linear-gradient(
+                to bottom,
+                #fff 90%,
+                #f9f9ff 95%
+            );`}>
             <BaseHeading as="h2" css={`grid-column: 2 / -2; text-align: center; margin-bottom: 20px;`}>
                 Contact Me
             </BaseHeading>
