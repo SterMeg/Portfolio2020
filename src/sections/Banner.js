@@ -160,7 +160,7 @@ export const Banner = () => (
       <ExternalLinks>
         {socialLinks.map(link => (
           <li key={link.name}>
-            <a href={link.url}><FontAwesomeIcon icon={linkIcon(link.name.toLowerCase())}/></a>
+            <a href={link.url}><FontAwesomeIcon width="13" height="13" icon={linkIcon(link.name.toLowerCase())}/></a>
           </li>
         ))}
       </ExternalLinks>
