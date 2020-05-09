@@ -1,4 +1,4 @@
-export const primaryFont = '"Montserrat", monospace'
+export const primaryFont = '"Montserrat", sans-serif'
 
 export const typeScale = {
   h1: "8rem",
