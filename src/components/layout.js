@@ -33,7 +33,12 @@ const GlobalStyle = createGlobalStyle`
       --noOfGutters: 13;
     }
 
+    box-sizing: border-box;
     font-size: 62.5%;
+  }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
   }
 
   body {
