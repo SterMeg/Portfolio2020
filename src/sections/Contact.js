@@ -1,53 +1,141 @@
-import React from "react"
+import React, { createRef } from "react"
 import styled from "styled-components"
+import { gsap } from "gsap"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
-import { TextLink, BaseHeading, SectionGrid } from "../components/styled"
+import { TextLink, BaseHeading, SectionGrid, GradientButton } from "../components/styled"
+import { lightTheme, breakpoints } from "../utils";
+import { GradientMask, Scallop } from "../components/svg"
 
 export const ContactForm = styled.form`
     display: grid;
     grid-column: 2 / -2;
-    grid-gap: 10px;
-    grid-template-columns: 1fr 3fr;
-    > label {
-        grid-column: 1;
-        &:last-of-type {
-            grid-column: 2;
-            grid-row: 1;
-        }
+    grid-gap: 15px;
+    grid-template-rows: repeat(3, 75px) 1fr;
+    @media (min-width: ${breakpoints.md}) {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto;
     }
     textarea {
-        width: 100%;
-        height: 100%;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
     }
 `;
+
+export const InputGroupStyle = styled.label`
+    position: relative;
+    border-radius: 4px;
+    @media (min-width: ${breakpoints.md}) {
+        grid-column: 1;
+        &:last-of-type {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+        }
+    }
+    display: grid;
+    text-transform: capitalize;
+    &::before {
+                    content: '';
+                    border-radius: 4px;
+                    position: absolute;
+                    top: 2px;
+                    bottom: 2px;
+                    left: 2px;
+                    right: 2px;
+                    background: #fff;
+                }
+    span {
+        border-radius: 4px;
+        position: absolute;
+        background: ${lightTheme.textColorInverted};
+        top: 0;
+        left: 10px;
+        transform: translateY(-50%);
+        padding: 0 5px;
+        font-size: 1.4rem;
+    }
+    > input, textarea {
+        background: ${lightTheme.accentColor};
+        border: none;
+        padding: 15px;
+        margin: 10px;
+        border-radius: inherit;
+        grid-row: 1 / -1;
+        grid-column: 1 / -1;
+        z-index: 2;
+    } 
+`;
+
+const SubmitButton = styled(GradientButton)`
+    box-shadow: -14px 14px 20px 0px rgba(176, 176, 176, 0.5);
+    justify-self: center; 
+    grid-column: 1 / -1;
+    transition: box-shadow 0.2s ease-in;
+    &:hover, &:focus {
+        box-shadow: -6px 6px 5px 0px rgba(98, 98, 98, 0.2);
+    }
+`
+
+const InputGroup = ({name, type}) => {
+    const ref = createRef()
+    const handleFocus = () => {
+        gsap.to(ref.current, {
+            duration: 0.5,
+            attr: {offset: 1},
+            ease: "powerOne.in"
+        })
+    }
+
+    const handleBlur = () => {
+        gsap.to(ref.current, {
+            duration: 0.5,
+            attr: { offset: 0 },
+            ease: "powerOne.out"
+          })
+    }
+
+    return (
+        <InputGroupStyle>
+            <GradientMask 
+                ref={ref}
+                css={`
+                    border-radius: 4px;
+                    grid-row: 1 / -1;
+                    grid-column: 1 / -1; 
+                    width: 100%; 
+                    height: 100%;
+                `} />
+            <span>{name}</span>
+            {type === "textarea" ? 
+            <textarea onFocus={handleFocus} onBlur={handleBlur} name={name} id={name} ></textarea> :
+            <input onFocus={handleFocus} onBlur={handleBlur} type={type} name={name} id={name}></input>
+            }
+        </InputGroupStyle>
+    )
+}
+
+
 
 export const Contact = () => {
     const { contact } = useSiteMetadata()
     return (
-        <SectionGrid css={`grid-column: 2 / -2; min-height: 80vh;`}>
-            <BaseHeading as="h2" css={`grid-column: 2 / -2; text-align: center;`}>
+        <SectionGrid css={`grid-column: 2 / -2; min-height: 80vh; grid-row-gap: 20px;  background: linear-gradient(
+            to bottom,
+            #fff 90%,
+            #f9f9ff 95%
+          );`}>
+            <BaseHeading as="h2" css={`grid-column: 2 / -2; text-align: center; margin-bottom: 20px;`}>
                 Contact Me
             </BaseHeading>
             <TextLink href={`mailto:${contact}`} css={`grid-column: 2 / -2; text-align: center;`}>{contact}</TextLink>
-            <p css={`grid-column: 2 / -2; text-align: center;`}>-or-</p>
-            <ContactForm>
-                <label htmlFor="">
-                    Name
-                    <input type="text"/>
-                </label>
-                <label htmlFor="">
-                    Email Address
-                    <input type="text"/>
-                </label>
-                <label htmlFor="">
-                    Subject 
-                    <input type="text"/>
-                </label>
-                <label htmlFor="">
-                    Message
-                    <textarea name="" id=""></textarea>
-                </label>
+            <p css={`grid-column: 2 / -2; text-align: center; text-transform: uppercase; margin: 0;`}>-or-</p>
+            <ContactForm name="contact" netlify>
+                <InputGroup name="name" type="text" />
+                <InputGroup name="email" type="email" />
+                <InputGroup name="subject" type="text"/>
+                <InputGroup name="message" type="textarea" />
+                <SubmitButton css={`margin-top: 20px;`}>Send Message</SubmitButton>
             </ContactForm>
+            <Scallop id={8} flip/>
         </SectionGrid>
     )
 }

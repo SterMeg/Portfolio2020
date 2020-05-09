@@ -35,7 +35,7 @@ const BannerText = styled.div`
   color: #fff;
   grid-row: 3;
   align-self: center;
-  padding: 40px 0 80px;
+  padding: 20px 0 60px;
   @media (min-width: ${breakpoints.md}) {
     grid-column: 2 / 8;
   }

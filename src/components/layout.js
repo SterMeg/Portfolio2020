@@ -48,6 +48,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${typeScale.paragraph};
     line-height: 1.6;
   }
+
+  a {
+    color: ${lightTheme.linkHover};
+  }
 `
 
 const PageLayout = styled.div`

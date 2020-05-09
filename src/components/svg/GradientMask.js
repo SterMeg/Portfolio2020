@@ -19,7 +19,7 @@ export const GradientMask = forwardRef(({className}, ref) => (
             stopOpacity="0"
           />
           <stop
-            offset="1"
+            offset="0.5"
             stopColor="white"
             stopOpacity="1"
           />
