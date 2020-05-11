@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import {lightTheme} from "../../utils"
+import {lightTheme, breakpoints} from "../../utils"
 
 export const SectionGrid = styled.section`
   /* Only 2 colors used, prop to alternate instead of sending color?  */
@@ -10,15 +10,8 @@ export const SectionGrid = styled.section`
     repeat(12, 1fr)
     calc(50vw - ((var(--max-width) / 2)));
     grid-column-gap: var(--gutter);
-  padding: 150px 0;
+  padding: var(--lgPad) 0;
   position: relative;
-` 
-
-export const GradientText = styled.span`
-  font-weight: 900;
-  background: -webkit-linear-gradient(0deg, #f40e67 0%, #fccd11 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 `
 
 export const listUnset = css`
@@ -35,10 +28,13 @@ export const LinkList = styled.ul`
     display: block;
     font-size: 1.3rem;
     font-weight: 700;
-    padding: 10px;
+    padding: 5px;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
+    @media (min-width: ${breakpoints.sm}) {
+      padding: 10px;
+    }
     &:hover {
       background: linear-gradient(to right, #f40e67 0%, #fccd11);
       color: ${lightTheme.textColorInverted};

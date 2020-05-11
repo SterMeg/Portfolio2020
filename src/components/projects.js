@@ -110,7 +110,10 @@ const ProjectContainer = styled.div`
   display: grid;
   grid-column: 2 / 6;
   grid-row: span 2;
-  padding: 45px;
+  padding: 25px;
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 45px;
+  }
   @media (min-width: ${breakpoints.md}) {
     grid-template-columns: 1fr 1fr;
   }
@@ -149,8 +152,7 @@ const SkillList = styled.ul`
       ${lightTheme.secondaryColor},
       #ff9400 50%,
       ${lightTheme.primaryColor} 100%
-    );
-  border-image-slice: 1;
+    ) 40;
   flex-wrap: wrap;
   padding: 5px;
   li {

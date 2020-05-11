@@ -10,10 +10,9 @@ export const ContactForm = styled.form`
     display: grid;
     grid-column: 2 / -2;
     grid-gap: 15px;
-    grid-template-rows: repeat(3, 75px) 1fr;
+    grid-auto-rows: 75px;
     @media (min-width: ${breakpoints.md}) {
         grid-template-columns: 1fr 2fr;
-        grid-template-rows: repeat(3, 75px);
     }
     textarea {
         width: calc(100% - 20px);
@@ -24,6 +23,9 @@ export const ContactForm = styled.form`
 export const InputGroupStyle = styled.label`
     position: relative;
     border-radius: 4px;
+    &:last-of-type {
+        grid-row: span 3;
+    }
     @media (min-width: ${breakpoints.md}) {
         grid-column: 1;
         &:last-of-type {
@@ -143,7 +145,7 @@ export const Contact = () => {
                 <InputGroup name="message" type="textarea" />
                 <SubmitButton css={`margin-top: 20px;`}>Send Message</SubmitButton>
             </ContactForm>
-            <Scallop id={8} flip/>
+            <Scallop flip/>
         </SectionGrid>
     )
 }

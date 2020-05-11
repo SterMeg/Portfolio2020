@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { BaseHeading } from "./styled"
-import { lightTheme } from "../utils"
+import { lightTheme, breakpoints } from "../utils"
 import border from "../images/border.svg"
 
 const ListTitle = styled(BaseHeading)`
@@ -19,18 +19,24 @@ const CardFaceStyle = styled.div`
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: ${({ face }) =>
-    face === "front"
-      ? "rotate(-45deg)"
-      : "rotate3d(0,1,0,180deg) rotate(-45deg)"};
+      face === "front"
+        ? "rotate(0deg)"
+        : "rotate3d(0,1,0,180deg)"};
+  @media (min-width: ${breakpoints.sm}) {
+    transform: ${({ face }) =>
+      face === "front"
+        ? "rotate(-45deg)"
+        : "rotate3d(0,1,0,180deg) rotate(-45deg)"};
+  }
   &:after {
     border: 4px solid #ff9400;
     border-image: url(${border});
     border-image-slice: 8;
     content: "";
-    top: -20px;
-    bottom: -20px;
-    left: -20px;
-    right: -20px;
+    top: -2rem;
+    bottom: -2rem;
+    left: -2rem;
+    right: -2rem;
     position: absolute;
   }
   ul {
@@ -41,7 +47,9 @@ const CardFaceStyle = styled.div`
     list-style: none;
     padding: 0;
     margin: 0;
-    transform: rotate(45deg);
+    @media (min-width: ${breakpoints.sm}) {
+      transform: rotate(45deg);
+    }
   }
 `
 

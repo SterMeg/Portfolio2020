@@ -5,7 +5,7 @@ const links = ["About", "Skills", "Projects", "Contact"]
 // Once blog page added,
 // add check for # & render a or Gatsby link
 const SiteLinks = () => (
-  <LinkList>
+  <LinkList css={`justify-self: end;`}>
     {links.map(link => (
       <li key={link.toLowerCase()}>
         <a href={`#${link.toLowerCase()}`}>{link}</a>

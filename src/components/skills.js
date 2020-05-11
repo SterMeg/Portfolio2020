@@ -56,7 +56,7 @@ const [skillSelect, setSkillSelect] = useState('frontend')
        attributes={skillToggle}
      />
      <SkillsGrid rotate={skillSelect === "backend" ? true : false}/>
-     <Scallop flip id={4} />
+     <Scallop flip />
    </SkillsContainer>
  )
 }

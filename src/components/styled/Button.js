@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { lightTheme, orange } from "../../utils"
+import { lightTheme, orange, breakpoints } from "../../utils"
 
 export const Button = styled.button`
   background: none;
@@ -9,8 +9,11 @@ export const Button = styled.button`
   display: inline-block;
   font-size: 1.4rem;
   font-weight: 600;
-  padding: 15px 50px;
+  padding: 15px 40px;
   text-decoration: none;
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 15px 50px;
+  }
 `
 
 export const LightButton = styled(Button)`

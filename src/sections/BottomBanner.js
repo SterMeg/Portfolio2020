@@ -6,7 +6,10 @@ import BannerImage from "../components/BannerImage"
 import { LightButton, BaseHeading, SectionGrid } from "../components/styled"
 
 const BottomBannerStyles = styled(SectionGrid)`
-  grid-template-rows: 1fr 40px 4fr;
+  grid-template-rows: 40px 1fr;
+  @media (min-width: ${breakpoints.md}) {
+    grid-template-rows: 1fr 40px 4fr;
+  }
   padding: 0;
   &:before {
     content: "";
@@ -43,7 +46,7 @@ const BannerText = styled.div`
 
 export const BottomBanner = () => (
          <BottomBannerStyles background={lightTheme.mainGradient}>
-          <UpperScallop id={7} />
+          <UpperScallop />
           <BannerText>
             <BaseHeading
               as="h2"
@@ -58,6 +61,6 @@ export const BottomBanner = () => (
            <BannerImageWrapper>
              <BannerImage />
            </BannerImageWrapper>
-           <Scallop id={6} flip />
+           <Scallop flip />
          </BottomBannerStyles>
        )

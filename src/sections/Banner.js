@@ -6,7 +6,7 @@ import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortaw
 import { Scallop, Circles, Shapes } from "../components/svg"
 import { lightTheme, breakpoints } from "../utils"
 import BannerImage from "../components/BannerImage"
-import { GradientText, LinkList, SectionGrid } from "../components/styled"
+import { BaseHeading, LinkList, SectionGrid } from "../components/styled"
 
 
 const socialLinks = [
@@ -51,11 +51,13 @@ const NameCard = styled.div`
   }
 `
 
-const H1 = styled(GradientText)`
-  font-size: 8rem;
+const H1 = styled(BaseHeading)`
+  background: -webkit-linear-gradient(0deg, #f40e67 0%, #fccd11 100%);
   line-height: 1.1;
   margin: 0;
   position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   &::before,
   &::after {
     display: block;
@@ -73,7 +75,7 @@ const H1 = styled(GradientText)`
     content: "Hello";
     padding: 30px 15px;
     left: 1%;
-    top: -46%;
+    top: -60%;
     @media (min-width: ${breakpoints.sm}) {
       left: unset;
       right: -13%;
@@ -86,7 +88,7 @@ const H1 = styled(GradientText)`
     content: "I am";
     padding: 20px 10px;
     left: 20%;
-    top: -25%;
+    top: -30%;
     @media (min-width: ${breakpoints.sm}) {
       left: unset;
       right: -20%;
@@ -170,6 +172,6 @@ export const Banner = () => (
       <Shapes />
       <BannerImage />
     </ImageContainer>
-    <Scallop flip id={2}/>
+    <Scallop flip />
   </BannerContainer>
 )

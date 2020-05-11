@@ -17,6 +17,10 @@ import Header from "./header"
 
 const GlobalStyle = createGlobalStyle`
   html {
+    --h1: calc(${typeScale.h1} * 0.85);
+    --h2: calc(${typeScale.h2} * 0.85);
+    --h3: ${typeScale.h3};
+    --lgPad: 5rem;
     --max-width: 114rem;
     --gutter: 2rem;
     --wrapper: calc(100vw - ( 2 * var(--gutter)));
@@ -27,6 +31,15 @@ const GlobalStyle = createGlobalStyle`
     --ratioB: 1;
     --factor: calc(var(--ratioB) / var(--ratioA));
     --rowHeight: calc(( (var(--wrapper) - (var(--noOfGutters) * var(--gutter))) / var(--noOfColumns)) * var(--factor));
+
+    @media (min-width: ${breakpoints.sm}) {
+      --h1: ${typeScale.h1};
+      --h2: ${typeScale.h2};
+    }
+
+    @media (min-width: ${breakpoints.md}) {
+      --lgPad: 15rem;
+    }
 
     @media (min-width: 1140px) {
       --wrapper: 1140px;
@@ -63,7 +76,7 @@ const PageLayout = styled.div`
 const Footer = styled.footer`
   align-self: end;
   text-align: center;
-  padding: 16px 0;
+  padding: 16px 20px;
   font-size: ${typeScale.copyrightText};
 `
 const Layout = ({ children }) => {

@@ -40,6 +40,7 @@ const FlipCardStyles = styled.div`
     --boxOffset: 4;
     --span: calc(var(--boxOffset) * 2);
     --gridColumnStart: var(--gridRowStart);
+    overflow: hidden;
   }
   @media (min-width: ${breakpoints.sm}) and (max-width: ${breakpoints.lg}) {
     &:last-of-type {
@@ -53,8 +54,12 @@ const FlipCardStyles = styled.div`
 
 const FlipCardInner = styled.div`
   display: grid;
-  grid-column: 2 / -2;
-  grid-row: 2 / -2;
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  @media (min-width: ${breakpoints.sm}) {
+    grid-column: 2 / -2;
+    grid-row: 2 / -2;
+  }
   height: 100%;
   text-align: center;
   transition: transform 0.8s;

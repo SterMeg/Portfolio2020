@@ -74,7 +74,7 @@ const NameCard = styled.figure`
     }
     p {
       font-weight: 700;
-      margin-bottom: 32px;
+      margin: 32px 0;
       a {
         font-weight: 400;
       }
@@ -86,9 +86,11 @@ const AboutContainer = styled(SectionGrid)`
   grid-row-gap: 20px;
   grid-template-rows: 115px auto;
   position: relative;
-  text-align: justify;
   @media (min-width: ${breakpoints.sm}) {
     grid-template-rows: 69px 115px auto;
+  }
+  @media (min-width: ${breakpoints.lg}) {
+    text-align: justify;
   }
 `
 
@@ -323,7 +325,7 @@ const About = () => {
           </g>
         </svg>
       </AboutBlurb>
-      <Scallop id={3} />
+      <Scallop />
     </AboutContainer>
   )
 }
