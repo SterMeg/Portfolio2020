@@ -29,6 +29,7 @@ const BannerImageWrapper = styled.div`
 `
 const UpperScallop = styled(Scallop)`
   position: static;
+  grid-column: 1 / -1;
   grid-row: 2;
   z-index: unset;
 `
