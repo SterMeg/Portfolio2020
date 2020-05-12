@@ -4,7 +4,7 @@ import { SVGUniqueID } from 'react-svg-unique-id'
 
 const ScallopPattern = styled.svg`
   top: 100%;
-  /* This transform fixes a Safari issue with a gradient artifact. I have no fucking idea why. */
+  /* This transform fixes a gradient artifact on Safari. I have no fucking idea why. */
   transform: translateY(0);
   ${props =>  props.flip && `
     transform: translateY(-100%);
@@ -39,7 +39,7 @@ export const Scallop = ({ flip, className }) => (
           x="0"
           y="0"
           width="100%"
-          height="41"
+          height="40"
           fill="url(#swoop)"
         />
       </mask>

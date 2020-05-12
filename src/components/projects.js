@@ -94,6 +94,7 @@ const ProjectsContainer = styled(SectionGrid)`
       }
       &:nth-of-type(5) {
         grid-column: 2 / span 8;
+        grid-row: span 1;
       }
     }
   }

@@ -9,7 +9,7 @@ const AboutImage = () => {
         relativePath: { eq: "meghan-about.jpg" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 458) {
+          fluid(maxWidth: 540) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }

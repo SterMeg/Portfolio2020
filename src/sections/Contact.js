@@ -125,14 +125,16 @@ export const Contact = () => {
         <SectionGrid 
             id="contact"
             css={`
-            grid-column: 2 / -2; 
-            min-height: 80vh; 
-            grid-row-gap: 20px;  
+            align-content: center;
             background: linear-gradient(
                 to bottom,
                 #fff 90%,
                 #f9f9ff 95%
-            );`}>
+            );
+            grid-column: 2 / -2; 
+            grid-row-gap: 20px;  
+            min-height: 100vh; 
+            `}>
             <BaseHeading as="h2" css={`grid-column: 2 / -2; text-align: center; margin-bottom: 20px;`}>
                 Contact Me
             </BaseHeading>
