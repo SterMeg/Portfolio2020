@@ -1,6 +1,6 @@
 import React, {Fragment} from "react"
 import styled from "styled-components"
-import { breakpoints } from "../utils"
+import { breakpoints, lightTheme } from "../utils"
 
 //Grid positioning should be passed in
 const ToggleStyle = styled.fieldset`
@@ -30,6 +30,9 @@ const ToggleStyle = styled.fieldset`
     font-size: 0.2rem;
     opacity: 0;
     position: absolute;
+  }
+  &:focus-within label:first-of-type:after {
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px ${lightTheme.primaryColor};
   }
 `
 
@@ -83,14 +86,13 @@ const RadioLabel = styled.label`
     width: 3rem;
   }
   &:first-of-type:after {
-    border: 1px solid #eee;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #eee;
     background-color: #222;
     border-radius: 5rem;
-    padding: 0.5rem;
-    height: 100%;
-    background-clip: content-box;
+    height: calc(100% - 1.2rem);
+    width: 6rem;
     transition: background-color 1s ease-in-out;
-    margin: 0 1rem;
+    margin: calc(1.2rem / 2) 1.5rem;
   }
 `
 
@@ -102,7 +104,7 @@ const Toggle = ({ activeToggle, setActiveToggle, attributes }) => (
       <Fragment key={input}>
         <RadioInput
           type="radio"
-          name={attributes.name}
+          name={attributes.id}
           value={input}
           id={input}
           checked={activeToggle === input}

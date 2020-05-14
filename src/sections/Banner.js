@@ -156,7 +156,7 @@ export const Banner = () => (
   <BannerContainer background={lightTheme.accentColor}>
     <NameCard>
       <H1 as="h1">
-        <span role="text">
+        <span role="text"> {/* eslint-disable-line jsx-a11y/aria-role */}
           <LeftBubble>Hello</LeftBubble>
           <RightBubble>I am</RightBubble>
           Meghan<br/>

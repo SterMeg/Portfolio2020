@@ -64,26 +64,26 @@ const FlipCardInner = styled.div`
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  transform: ${({rotate}) =>
-    rotate ? "rotate3d(0,1,0,180deg)" : "none"};
+  transform: ${({flip}) =>
+    flip ? "rotate3d(0,1,0,180deg)" : "none"};
 `
 
-export const SkillsGrid = ({rotate = false }) => (
+export const SkillsGrid = ({ rotate }) => (
   skillsets.map(({title, frontend, backend}, index) => (
       <FlipCardStyles index={index} key={title}>
-        <FlipCardInner rotate={ backend ? rotate : false }>
+        <FlipCardInner flip={ backend && rotate }>
           <CardFace
               face="front"
               list={frontend}
               title={title}
-              rotate={rotate}
+              hideFromSr={rotate}
             />
           {backend && 
           <CardFace 
             face="back"
             list={backend}
             title={title}
-            rotate={rotate}
+            hideFromSr={!rotate}
           />
           }
         </FlipCardInner>

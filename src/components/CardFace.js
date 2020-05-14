@@ -58,8 +58,8 @@ const ListWrapper = styled.div`
   }
 `
 
-export const CardFace = ({ face = "front", list, title, rotate }) => (
-  <CardFaceStyle face={face} key={title + face} aria-hidden={face === "front" && rotate || face === "back" && !rotate ? "true" : "false"}>
+export const CardFace = ({ face = "front", list, title, hideFromSr }) => (
+  <CardFaceStyle face={face} key={title + face} aria-hidden={hideFromSr}>
     <ListWrapper>
       <ListTitle as="h3">{title}</ListTitle>
       <ul>

@@ -48,7 +48,7 @@ const [skillSelect, setSkillSelect] = useState('frontend')
  return (
    <SkillsContainer id="skills">
      <SkillsTitle as="h2">
-       <span role="text">
+       <span role="text"> {/* eslint-disable-line jsx-a11y/aria-role */}
         My<br/> Skills
        </span>
      </SkillsTitle>

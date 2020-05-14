@@ -116,7 +116,7 @@ const About = () => {
   return (
     <AboutContainer id="about">
       <AboutHeading as="h2">
-        <span role="text">
+        <span role="text"> {/* eslint-disable-line jsx-a11y/aria-role */}
           About<br/>
           Meghan
         </span>
