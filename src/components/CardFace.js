@@ -12,9 +12,11 @@ const ListTitle = styled(BaseHeading)`
 const CardFaceStyle = styled.div`
   box-shadow: 0 0 20px #b0b0b0;
   background-color: #fff;
+  display: grid;
   grid-row: 1 / -1;
   grid-column: 1 / -1;
   margin: 20px;
+  place-content: center;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -47,19 +49,24 @@ const CardFaceStyle = styled.div`
     list-style: none;
     padding: 0;
     margin: 0;
-    @media (min-width: ${breakpoints.sm}) {
-      transform: rotate(45deg);
-    }
   }
 `
 
-export const CardFace = ({ face = "front", list, title }) => (
-  <CardFaceStyle face={face} key={title + face}>
-    <ul>
+const ListWrapper = styled.div`
+  @media (min-width: ${breakpoints.sm}) {
+    transform: rotate(45deg);
+  }
+`
+
+export const CardFace = ({ face = "front", list, title, rotate }) => (
+  <CardFaceStyle face={face} key={title + face} aria-hidden={face === "front" && rotate || face === "back" && !rotate ? "true" : "false"}>
+    <ListWrapper>
       <ListTitle as="h3">{title}</ListTitle>
-      {list.map(listItem => (
-        <li key={listItem}>{listItem}</li>
-      ))}
-    </ul>
+      <ul>
+        {list.map(listItem => (
+          <li key={listItem}>{listItem}</li>
+        ))}
+      </ul>
+    </ListWrapper>
   </CardFaceStyle>
 )

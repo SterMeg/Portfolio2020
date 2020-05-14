@@ -1,6 +1,18 @@
 import styled, { css } from 'styled-components'
 import {lightTheme, breakpoints} from "../../utils"
 
+export const SrOnly = styled.span`
+  &:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+  }
+`
+
 export const SectionGrid = styled.section`
   /* Only 2 colors used, prop to alternate instead of sending color?  */
   background: ${props => props.background || lightTheme.backgroundColor};
@@ -35,7 +47,7 @@ export const LinkList = styled.ul`
     @media (min-width: ${breakpoints.sm}) {
       padding: 10px;
     }
-    &:hover {
+    &:hover, &:focus {
       background: linear-gradient(to right, #f40e67 0%, #fccd11);
       color: ${lightTheme.textColorInverted};
     }

@@ -6,7 +6,7 @@ import { faMediumM, faTwitter, faCodepen, faLinkedinIn, faGithub } from "@fortaw
 import { Scallop, Circles, Shapes } from "../components/svg"
 import { lightTheme, breakpoints } from "../utils"
 import BannerImage from "../components/BannerImage"
-import { BaseHeading, LinkList, SectionGrid } from "../components/styled"
+import { BaseHeading, LinkList, SectionGrid, SrOnly } from "../components/styled"
 
 
 const socialLinks = [
@@ -26,7 +26,7 @@ const socialLinks = [
   },
 ]
 
-const NameCard = styled.div`
+const NameCard = styled.header`
   grid-row-start: 1;
   align-self: end;
   align-items: center;
@@ -46,8 +46,46 @@ const NameCard = styled.div`
   @media (min-width: ${breakpoints.lg}) {
     grid-column: 2 / span 6;
   }
-  h3 {
+  p {
+    font-size: var(--h3);
+    font-weight: 700;
     text-transform: uppercase;
+  }
+`
+
+const SpeechBubble = styled.span`
+  display: block;
+  background: ${lightTheme.textColor};
+  color: ${lightTheme.textColorInverted};
+  font-weight: 600;
+  font-size: 2rem;
+  position: absolute;
+  -webkit-text-fill-color: #fff;
+`
+
+const LeftBubble = styled(SpeechBubble)`
+  border-radius: 50% 50% 50% 0;
+  content: "Hello";
+  padding: 30px 15px;
+  left: 1%;
+  top: -60%;
+  @media (min-width: ${breakpoints.sm}) {
+    left: unset;
+    right: -13%;
+    top: -35%;
+  }
+`
+
+const RightBubble = styled(SpeechBubble)`
+  border: 2px solid #fff;
+  border-radius: 50% 50% 0 50%;
+  padding: 20px 10px;
+  left: 20%;
+  top: -30%;
+  @media (min-width: ${breakpoints.sm}) {
+    left: unset;
+    right: -20%;
+    top: -2%;
   }
 `
 
@@ -58,43 +96,6 @@ const H1 = styled(BaseHeading)`
   position: relative;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  &::before,
-  &::after {
-    display: block;
-    background: ${lightTheme.textColor};
-    color: ${lightTheme.textColorInverted};
-    font-weight: 600;
-    font-size: 2rem;
-    position: absolute;
-    -webkit-text-fill-color: #fff;
-    @media (min-width: ${breakpoints.sm}) {
-    }
-  }
-  &::before {
-    border-radius: 50% 50% 50% 0;
-    content: "Hello";
-    padding: 30px 15px;
-    left: 1%;
-    top: -60%;
-    @media (min-width: ${breakpoints.sm}) {
-      left: unset;
-      right: -13%;
-      top: -35%;
-    }
-  }
-  &::after {
-    border: 2px solid #fff;
-    border-radius: 50% 50% 0 50%;
-    content: "I am";
-    padding: 20px 10px;
-    left: 20%;
-    top: -30%;
-    @media (min-width: ${breakpoints.sm}) {
-      left: unset;
-      right: -20%;
-      top: -2%;
-    }
-  }
 `
 
 const ExternalLinks = styled(LinkList)`
@@ -155,14 +156,18 @@ export const Banner = () => (
   <BannerContainer background={lightTheme.accentColor}>
     <NameCard>
       <H1 as="h1">
-        Meghan<br/>
-        Sterling
+        <span role="text">
+          <LeftBubble>Hello</LeftBubble>
+          <RightBubble>I am</RightBubble>
+          Meghan<br/>
+          Sterling
+        </span>
       </H1>
-      <h3>Full-Stack Developer</h3>
+      <p>Full-Stack Developer</p>
       <ExternalLinks>
         {socialLinks.map(link => (
           <li key={link.name}>
-            <a href={link.url}><FontAwesomeIcon width="13" height="13" icon={linkIcon(link.name.toLowerCase())}/></a>
+            <a href={link.url}><FontAwesomeIcon width="13" height="13" icon={linkIcon(link.name.toLowerCase())}/><SrOnly>{link.name}</SrOnly></a>
           </li>
         ))}
       </ExternalLinks>

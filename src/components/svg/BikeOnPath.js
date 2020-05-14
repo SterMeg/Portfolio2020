@@ -45,6 +45,8 @@ export const BikeOnPath = () => {
           fill-rule="evenodd"
           clip-rule="evenodd"
           id="bikeMove"
+          aria-hidden="true" 
+          focusable="false" 
         >
           <path
             d="M35.689 91.566s122.114 96.957 244.583 0c122.47-96.957 227.82 0 227.82 0m.32 0s122.114 96.957 244.582 0c122.473-96.957 218.01 0 218.01 0m.102 0s122.115 96.957 244.582 0"

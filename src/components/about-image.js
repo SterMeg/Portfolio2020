@@ -17,7 +17,7 @@ const AboutImage = () => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+  return <Img alt="Headshot of Meghan Sterling" fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
 export default AboutImage

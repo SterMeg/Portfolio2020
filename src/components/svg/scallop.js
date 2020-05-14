@@ -15,7 +15,7 @@ const ScallopPattern = styled.svg`
 
 export const Scallop = ({ flip, className }) => (
   <SVGUniqueID>
-    <ScallopPattern xmlns="http://www.w3.org/2000/svg" flip={flip} className={className} width="100%" height="40">
+    <ScallopPattern xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" flip={flip} className={className} width="100%" height="40">
       <pattern
         id="swoop"
         x="0"

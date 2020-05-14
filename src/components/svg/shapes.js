@@ -15,6 +15,8 @@ export const Shapes = () => (
          <ShapesSvg
            xmlns="http://www.w3.org/2000/svg"
            viewBox="0 0 506.013 302.466"
+           aria-hidden="true" 
+           focusable="false" 
          >
              <defs>
                <filter

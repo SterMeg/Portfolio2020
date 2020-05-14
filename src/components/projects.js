@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { lightTheme, breakpoints } from "../utils"
-import { BaseHeading, SectionGrid, listUnset, GradientButton } from "./styled"
+import { BaseHeading, SectionGrid, listUnset, GradientButton, SrOnly } from "./styled"
 
 
 
@@ -102,6 +102,7 @@ const ProjectsContainer = styled(SectionGrid)`
 
 const ProjectsHeading = styled(BaseHeading)`
   grid-column: 2 / -2;
+  margin-bottom: 20px;
   text-align: center;
 `
 
@@ -210,7 +211,8 @@ const Projects = () => {
           </Description>
           {project.img && (
             <ImageBorder href={project.url}>
-              <Img fluid={project.img.childImageSharp.fluid} />
+              <Img alt={project.name} fluid={project.img.childImageSharp.fluid} />
+              <SrOnly>{project.name}</SrOnly>
             </ImageBorder>
           )}
           <ButtonGrid>

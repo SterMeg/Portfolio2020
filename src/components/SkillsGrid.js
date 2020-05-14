@@ -76,12 +76,14 @@ export const SkillsGrid = ({rotate = false }) => (
               face="front"
               list={frontend}
               title={title}
+              rotate={rotate}
             />
           {backend && 
           <CardFace 
             face="back"
             list={backend}
             title={title}
+            rotate={rotate}
           />
           }
         </FlipCardInner>

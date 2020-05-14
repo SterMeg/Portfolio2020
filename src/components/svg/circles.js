@@ -17,7 +17,7 @@ const CirclesSvg = styled.svg`
 `
 
 export const Circles = () => (
-  <CirclesSvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695 695">
+  <CirclesSvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 695 695" aria-hidden="true" focusable="false">
     <defs>
       <filter
         id="a"

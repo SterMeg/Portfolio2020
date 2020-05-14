@@ -48,7 +48,9 @@ const [skillSelect, setSkillSelect] = useState('frontend')
  return (
    <SkillsContainer id="skills">
      <SkillsTitle as="h2">
-       My<br></br> Skills
+       <span role="text">
+        My<br/> Skills
+       </span>
      </SkillsTitle>
      <Toggle
        activeToggle={skillSelect}

@@ -1,5 +1,5 @@
 import React from "react"
-import { SectionGrid } from "./styled"
+import { SectionGrid, SrOnly } from "./styled"
 import { Logo, Scallop } from './svg'
 import styled from 'styled-components'
 import { Link } from "gatsby"
@@ -35,6 +35,7 @@ const Header = ({ siteLinks }) => (
     <Nav>
       <HomeLink to="/">
         <Logo/>
+        <SrOnly>Home</SrOnly>
       </HomeLink>
       <SiteLinks 
         links={siteLinks}

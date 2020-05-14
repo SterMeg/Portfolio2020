@@ -60,25 +60,22 @@ const NameCard = styled.figure`
       grid-column: 1;
       grid-row: auto;
     }
-    h3 {
-      text-transform: uppercase;
-    }
-    h3,
-    h4,
-    p {
+    h4 {
       margin: 0;
     }
     h4 {
       font-weight: 400;
       margin-bottom: 30px;
     }
-    p {
-      font-weight: 700;
-      margin: 32px 0;
-      a {
-        font-weight: 400;
-      }
-    }
+    
+  }
+`
+
+const Email = styled.p`
+  font-weight: 700;
+  margin: 32px 0;
+  a {
+    font-weight: 400;
   }
 `
 
@@ -118,21 +115,28 @@ const About = () => {
   const { contact } = useSiteMetadata()
   return (
     <AboutContainer id="about">
-      <AboutHeading as="h2">About<br></br>Meghan</AboutHeading>
+      <AboutHeading as="h2">
+        <span role="text">
+          About<br/>
+          Meghan
+        </span>
+      </AboutHeading>
       <NameCard>
         <AboutImage />
         <figcaption>
-          <h3>Meghan Sterling</h3>
-          <Typewriter 
-            options={{
-              strings: typewriter,
-              autoStart: true,
-              loop: true
-            }}
-          />
-          <p>
+          <BaseHeading as="p" looksLike="h3" css={`text-transform: uppercase;`}>Meghan Sterling</BaseHeading>
+          <div aria-hidden="true">
+            <Typewriter 
+              options={{
+                strings: typewriter,
+                autoStart: true,
+                loop: true
+              }}
+            />
+          </div>
+          <Email>
             email: <TextLink href={`mailto:${contact}`}>{contact}</TextLink>
-          </p>
+          </Email>
           <GradientButton as="a" href="#contact">
             Contact Me
           </GradientButton>

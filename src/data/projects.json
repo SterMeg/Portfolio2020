@@ -21,7 +21,7 @@
       "Express",
       "MongoDB"
     ],
-    "description": "My first full-stack application, ChoreCheck is an initial prototype for a simple, low cognitive overhead tracker for recurring weekly chores.",
+    "description": "My first full-stack application, ChoreCheck is an initial prototype for a simple, low cognitive overhead tracker for a household's recurring weekly chores.",
     "url": "https://chore-checker.herokuapp.com/",
     "github": "https://github.com/SterMeg/chorecheck",
     "showOnPortfolio": true,
