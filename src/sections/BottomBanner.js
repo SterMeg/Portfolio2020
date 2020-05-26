@@ -55,7 +55,7 @@ export const BottomBanner = () => (
             >
               Chat about coding, comics, or coffee!
             </BaseHeading>
-            <LightButton>
+            <LightButton as="a" href="#contact">
               Contact Me  
             </LightButton>
           </BannerText>

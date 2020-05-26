@@ -15,18 +15,19 @@ const HeaderContainer = styled(SectionGrid)`
 const Nav = styled.nav`
   align-items: center;
   display: grid;
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   padding: 10px 0 0;
+  grid-template-columns: 45px 1fr;
   @media (min-width: ${breakpoints.sm}) {
     grid-template-columns: 65px 1fr;
+    grid-column: 2 / -2;
   }
 `
 const HomeLink = styled(Link)`
-  width: 10vw;
-  transform: rotate(-20deg);
+  z-index: 20;
+  transform: rotate(90deg) translateX(25%);
   @media (min-width: ${breakpoints.sm}) {
     transform: none;
-    width: 65px;
   }
 `
 

@@ -1,10 +1,10 @@
 import React, {useState} from "react"
 import { breakpoints } from "../utils"
-import { Scallop } from "./svg"
+import { Scallop } from "../components/svg"
 import styled from "styled-components"
-import { SectionGrid, BaseHeading }  from "./styled"
-import Toggle from "./toggle"
-import { SkillsGrid } from "./SkillsGrid"
+import { SectionGrid, BaseHeading }  from "../components/styled"
+import Toggle from "../components/toggle"
+import { SkillsGrid } from "../components/SkillsGrid"
 
 const SkillsContainer = styled(SectionGrid)`
   background: linear-gradient(
@@ -43,7 +43,7 @@ const skillToggle = {
   ]
 }
 
-const Skills = () => {
+export const Skills = () => {
 const [skillSelect, setSkillSelect] = useState('frontend')
  return (
    <SkillsContainer id="skills">
@@ -62,5 +62,3 @@ const [skillSelect, setSkillSelect] = useState('frontend')
    </SkillsContainer>
  )
 }
-
-export default Skills

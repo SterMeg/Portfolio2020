@@ -6,7 +6,7 @@ import { TextLink, BaseHeading, SectionGrid, GradientButton } from "../component
 import { lightTheme, breakpoints } from "../utils";
 import { GradientMask, Scallop } from "../components/svg"
 
-export const ContactForm = styled.form`
+const ContactForm = styled.form`
     display: grid;
     grid-column: 2 / -2;
     grid-gap: 15px;
@@ -69,6 +69,12 @@ export const InputGroupStyle = styled.label`
     } 
 `;
 
+const ContactTitle = styled(BaseHeading)`
+    grid-column: 2 / -2; 
+    text-align: center; 
+    margin-bottom: 20px;
+`
+
 const SubmitButton = styled(GradientButton)`
     box-shadow: -14px 14px 20px 0px rgba(176, 176, 176, 0.5);
     justify-self: center; 
@@ -78,6 +84,7 @@ const SubmitButton = styled(GradientButton)`
         box-shadow: -6px 6px 5px 0px rgba(98, 98, 98, 0.2);
     }
 `
+
 
 const InputGroup = ({name, type}) => {
     const ref = createRef()
@@ -122,7 +129,7 @@ const InputGroup = ({name, type}) => {
 export const Contact = () => {
     const { contact } = useSiteMetadata()
     return (
-        <SectionGrid 
+        <SectionGrid
             id="contact"
             css={`
             align-content: center;
@@ -135,9 +142,9 @@ export const Contact = () => {
             grid-row-gap: 20px;  
             min-height: 100vh; 
             `}>
-            <BaseHeading as="h2" css={`grid-column: 2 / -2; text-align: center; margin-bottom: 20px;`}>
+            <ContactTitle as="h2">
                 Contact Me
-            </BaseHeading>
+            </ContactTitle>
             <TextLink href={`mailto:${contact}`} css={`grid-column: 2 / -2; text-align: center;`}>{contact}</TextLink>
             <p css={`grid-column: 2 / -2; text-align: center; text-transform: uppercase; margin: 0;`}>-or-</p>
             <ContactForm name="contact" netlify>
@@ -145,7 +152,7 @@ export const Contact = () => {
                 <InputGroup name="email" type="email" />
                 <InputGroup name="subject" type="text"/>
                 <InputGroup name="message" type="textarea" />
-                <SubmitButton css={`margin-top: 20px;`}>Send Message</SubmitButton>
+                <SubmitButton type="submit" css={`margin-top: 20px;`}>Send Message</SubmitButton>
             </ContactForm>
             <Scallop flip/>
         </SectionGrid>

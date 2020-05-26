@@ -19,8 +19,11 @@ export const Button = styled.button`
 export const LightButton = styled(Button)`
          background: ${lightTheme.textColorInverted};
          box-shadow: -14px 14px 20px 0px rgba(98, 98, 98, 0.2);
+         color: ${lightTheme.textColor};
+         transition: color 0.5s ease, box-shadow 0.3s ease;
          &:hover, &:focus {
            box-shadow: -6px 6px 5px 0px rgba(98, 98, 98, 0.2);
+           color: ${lightTheme.linkHover};
          }
        `
 

@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
     --h1: calc(${typeScale.h1} * 0.85);
     --h2: calc(${typeScale.h2} * 0.85);
     --h3: ${typeScale.h3};
-    --lgPad: 5rem;
+    --lgPad: 7.5rem;
     --max-width: 114rem;
     --gutter: 2rem;
     --wrapper: calc(100vw - ( 2 * var(--gutter)));

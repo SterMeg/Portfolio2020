@@ -6,9 +6,9 @@ import { breakpoints, lightTheme } from "../utils"
 const ToggleStyle = styled.fieldset`
   border: none;
   margin: 0;
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   top: calc(100vh - 62px);
-  background: white;
+  background: linear-gradient(to bottom, white 75%, #F9F9FF);
   z-index: 5;
   text-align: center;
   padding: 10px 0;
@@ -19,6 +19,7 @@ const ToggleStyle = styled.fieldset`
     text-align: left;
     transform: translateY(0);
     justify-self: end;
+    grid-column: 2 / -2;
     grid-row: 5 / span 2;
     padding: 0;
     background: none;

@@ -3,9 +3,9 @@ import Typewriter from "typewriter-effect"
 import styled from "styled-components"
 
 import {useSiteMetadata} from "../hooks/useSiteMetadata"
-import { Scallop, BikeOnPath } from "./svg"
-import { SectionGrid, BaseHeading, GradientButton, TextLink } from "./styled"
-import AboutImage from "./about-image"
+import { Scallop } from "../components/svg"
+import { SectionGrid, BaseHeading, GradientButton, TextLink, SrOnly } from "../components/styled"
+import AboutImage from "../components/about-image"
 import { breakpoints } from "../utils"
 
 const typewriter = [
@@ -19,15 +19,14 @@ const typewriter = [
   "Shower Singer"
 ]
 
-const NameCard = styled.figure`
+const NameCard = styled.div`
   box-shadow: -6.84px 3.58px 21px #b0b0b0;
   display: grid;
   grid-column: 2 / -2;
-  grid-row: span 2;
+  grid-row: 2 / span 2;
   @media (min-width: ${breakpoints.sm}) {
     box-shadow: none;
     grid-template-columns: 2fr 0.25fr 2fr;
-    grid-row: 2 / span 2;
     grid-template-rows: 115px auto 50px;
     .gatsby-image-wrapper {
       grid-row: 1 / span 2;
@@ -42,8 +41,10 @@ const NameCard = styled.figure`
   }
   align-self: start;
   margin: 0;
-  figcaption {
-    display: grid;
+`
+
+const CardText = styled.div`
+ display: grid;
     align-content: center;
     justify-items: center;
     padding: 50px;
@@ -61,14 +62,9 @@ const NameCard = styled.figure`
       grid-row: auto;
     }
     h4 {
-      margin: 0;
-    }
-    h4 {
+      margin: 0 0 30px 0;
       font-weight: 400;
-      margin-bottom: 30px;
     }
-    
-  }
 `
 
 const Email = styled.p`
@@ -82,10 +78,8 @@ const Email = styled.p`
 const AboutContainer = styled(SectionGrid)`
   grid-row-gap: 20px;
   grid-template-rows: 115px auto;
+  grid-template-rows: 69px 115px auto;
   position: relative;
-  @media (min-width: ${breakpoints.sm}) {
-    grid-template-rows: 69px 115px auto;
-  }
   @media (min-width: ${breakpoints.lg}) {
     text-align: justify;
   }
@@ -100,18 +94,18 @@ const AboutBlurb = styled.div`
 `
 const AboutHeading = styled(BaseHeading)`
   grid-column: 2 / -2;
+  grid-row: 1 / span 2;
   text-align: right;
-  transform: rotate(-8deg);
+  transform: rotate(8deg);
   z-index: 5;
   @media (min-width: ${breakpoints.sm}) {
     grid-column: 6 / -2;
-    grid-row: 1 / span 2;
     text-align: left;
     transform: rotate(0);
   }
 `
  
-const About = () => {
+export const About = () => {
   const { contact } = useSiteMetadata()
   return (
     <AboutContainer id="about">
@@ -123,7 +117,7 @@ const About = () => {
       </AboutHeading>
       <NameCard>
         <AboutImage />
-        <figcaption>
+        <CardText>
           <BaseHeading as="p" looksLike="h3" css={`text-transform: uppercase;`}>Meghan Sterling</BaseHeading>
           <div aria-hidden="true">
             <Typewriter 
@@ -134,13 +128,18 @@ const About = () => {
               }}
             />
           </div>
+          <SrOnly as="ul">
+              {typewriter.map(item => (
+                <li>{item}</li>
+              ))}
+          </SrOnly>
           <Email>
             email: <TextLink href={`mailto:${contact}`}>{contact}</TextLink>
           </Email>
           <GradientButton as="a" href="#contact">
             Contact Me
           </GradientButton>
-        </figcaption>
+        </CardText>
       </NameCard>
       <AboutBlurb>
         <p>
@@ -164,12 +163,9 @@ const About = () => {
           with an e-bike, and am particularly interested in remote opportunities so that I can
           achieve that goal.
         </p>
-        <BikeOnPath />
+        {/* <BikeOnPath /> */}
       </AboutBlurb>
       <Scallop />
     </AboutContainer>
   )
 }
-
-
-export default About

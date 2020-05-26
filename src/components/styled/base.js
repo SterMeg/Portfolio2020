@@ -12,9 +12,23 @@ export const SrOnly = styled.span`
     width: 1px;
   }
 `
+export const BaseHeading = styled.h1`
+  font-size: ${({ as, looksLike }) => looksLike ? `var(--${looksLike})` : `var(--${as})`};
+  margin: 0;
+  margin-bottom: ${({ margin }) => margin || 0};
+  font-weight: ${({as}) => as === "h1" || as === "h2" ? 900 : 700};
+  line-height: 1;
+`
+
+export const TextLink = styled.a`
+  color: inherit;
+  transition: color 0.5s ease;
+  &:hover {
+    color: ${lightTheme.linkHover}
+  }
+`
 
 export const SectionGrid = styled.section`
-  /* Only 2 colors used, prop to alternate instead of sending color?  */
   background: ${props => props.background || lightTheme.backgroundColor};
   display: grid;
   grid-template-columns:

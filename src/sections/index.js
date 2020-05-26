@@ -1,3 +1,6 @@
-export { BottomBanner } from "./BottomBanner"
 export { Banner } from "./Banner"
+export { About } from "./About"
+export { Skills } from "./Skills"
+export { Projects } from "./Projects"
+export { BottomBanner } from "./BottomBanner"
 export { Contact } from "./Contact"

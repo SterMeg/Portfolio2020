@@ -21,7 +21,7 @@
       "Express",
       "MongoDB"
     ],
-    "description": "My first full-stack application, ChoreCheck is an initial prototype for a simple, low cognitive overhead tracker for a household's recurring weekly chores.",
+    "description": "Built on the <abbr title='MongoDB Express React Node.js'>MERN</abbr> stack, ChoreCheck is an initial prototype. The goal is to provide a simple, low cognitive overhead interface to track a household's recurring weekly chores.",
     "url": "https://chore-checker.herokuapp.com/",
     "github": "https://github.com/SterMeg/chorecheck",
     "showOnPortfolio": true,
