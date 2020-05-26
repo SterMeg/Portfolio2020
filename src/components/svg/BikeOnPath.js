@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import { MotionPathPlugin } from "gsap/MotionPathPlugin"
 gsap.registerPlugin(MotionPathPlugin)
 
-
 export const BikeOnPath = () => {
   const stop1 = useRef(null);
   const stop2 = useRef(null);
